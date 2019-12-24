@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>人脸识别算法(Python) | Rex&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="人脸识别算法(Python)写在前面学习OpenCV 很久了，正好这段时间在学习机器学习，课程刚好讲到人脸识别 课程连接如下 TensorFlow快速入门与实战 在其中的一课中讲到了OpenCV的人脸识别算法 人脸识别的方法不止有OpenCV调用自带的训练样本集，本文提到的方法有两种  OpenCV人脸识别 face-recognition库  算法介绍(OpenCV)这里使用到了OpenCV的一">
+<meta name="keywords" content="人脸识别,机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人脸识别算法(Python)">
+<meta property="og:url" content="https://github.com/RoWe98/2019/06/18/OpenCV 人脸识别算法/index.html">
+<meta property="og:site_name" content="Rex&#39;s Blog">
+<meta property="og:description" content="人脸识别算法(Python)写在前面学习OpenCV 很久了，正好这段时间在学习机器学习，课程刚好讲到人脸识别 课程连接如下 TensorFlow快速入门与实战 在其中的一课中讲到了OpenCV的人脸识别算法 人脸识别的方法不止有OpenCV调用自带的训练样本集，本文提到的方法有两种  OpenCV人脸识别 face-recognition库  算法介绍(OpenCV)这里使用到了OpenCV的一">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/18/VqyHJJ.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/18/VqgVIS.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/18/Vq4mGT.md.png">
+<meta property="og:updated_time" content="2019-12-24T13:14:52.723Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="人脸识别算法(Python)">
+<meta name="twitter:description" content="人脸识别算法(Python)写在前面学习OpenCV 很久了，正好这段时间在学习机器学习，课程刚好讲到人脸识别 课程连接如下 TensorFlow快速入门与实战 在其中的一课中讲到了OpenCV的人脸识别算法 人脸识别的方法不止有OpenCV调用自带的训练样本集，本文提到的方法有两种  OpenCV人脸识别 face-recognition库  算法介绍(OpenCV)这里使用到了OpenCV的一">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/06/18/VqyHJJ.md.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Rex&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Rex&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Code and Passion</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/RoWe98"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-OpenCV 人脸识别算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/18/OpenCV 人脸识别算法/" class="article-date">
+  <time datetime="2019-06-18T07:26:39.000Z" itemprop="datePublished">2019-06-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      人脸识别算法(Python)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="人脸识别算法-Python"><a href="#人脸识别算法-Python" class="headerlink" title="人脸识别算法(Python)"></a>人脸识别算法(Python)</h1><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p><strong>学习OpenCV 很久了，正好这段时间在学习机器学习，课程刚好讲到人脸识别</strong></p>
+<p>课程连接如下</p>
+<p><a href="https://www.bilibili.com/video/av54618101" target="_blank" rel="noopener">TensorFlow快速入门与实战</a></p>
+<p>在其中的一课中讲到了OpenCV的人脸识别算法</p>
+<p><strong>人脸识别的方法不止有OpenCV调用自带的训练样本集，本文提到的方法有两种</strong></p>
+<ul>
+<li>OpenCV人脸识别</li>
+<li>face-recognition库</li>
+</ul>
+<h2 id="算法介绍-OpenCV"><a href="#算法介绍-OpenCV" class="headerlink" title="算法介绍(OpenCV)"></a>算法介绍(OpenCV)</h2><p><strong>这里使用到了OpenCV的一个人脸训练样本集,点击下面的超链接即可下载</strong></p>
+<p><a href="http://qiniusave.luoshaoqi.cn/haarcascade_frontalface_default.xml" target="_blank" rel="noopener">haarcascade_frontalface_default.xml</a></p>
+<p>这个训练集是OpenCV为我们提供的已经通过机器学习训练好的一个样本集，当然你也可以去OpenCV的GitHub主页去查看其它的训练样本集</p>
+<p><a href="https://github.com/opencv/opencv">OpenCV</a></p>
+<p>为了方便日后学习，本人还是建议大家将项目clone下载可以日后查看代码。</p>
+<h2 id="OpenCV人脸识别算法逻辑"><a href="#OpenCV人脸识别算法逻辑" class="headerlink" title="OpenCV人脸识别算法逻辑"></a>OpenCV人脸识别算法逻辑</h2><ul>
+<li>读取图片</li>
+<li>读取样本集</li>
+<li>调用OpenCV识别人脸</li>
+<li>使用rectangle方法绘制人脸</li>
+</ul>
+<h2 id="代码实现-OpenCV"><a href="#代码实现-OpenCV" class="headerlink" title="代码实现(OpenCV)"></a>代码实现(OpenCV)</h2><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># -*- coding: utf-8 -*-</span>
+
+<span class="token keyword">import</span> cv2
+<span class="token keyword">import</span> sys
+
+<span class="token comment" spellcheck="true"># Get user supplied values</span>
+imagePath <span class="token operator">=</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+cascPath <span class="token operator">=</span> <span class="token string">"haarcascade_frontalface_default.xml"</span>
+
+<span class="token comment" spellcheck="true"># Create the haar cascade</span>
+faceCascade <span class="token operator">=</span> cv2<span class="token punctuation">.</span>CascadeClassifier<span class="token punctuation">(</span>cascPath<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># Read the image</span>
+image <span class="token operator">=</span> cv2<span class="token punctuation">.</span>imread<span class="token punctuation">(</span>imagePath<span class="token punctuation">)</span>
+gray <span class="token operator">=</span> cv2<span class="token punctuation">.</span>cvtColor<span class="token punctuation">(</span>image<span class="token punctuation">,</span> cv2<span class="token punctuation">.</span>COLOR_BGR2GRAY<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># Detect faces in image</span>
+faces <span class="token operator">=</span> faceCascade<span class="token punctuation">.</span>detectMultiScale<span class="token punctuation">(</span>
+    gray<span class="token punctuation">,</span>
+    scaleFactor<span class="token operator">=</span><span class="token number">1.1</span><span class="token punctuation">,</span>
+    minNeighbors<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span>
+    minSize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Found {0} Faces! in the Picture"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>len<span class="token punctuation">(</span>faces<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># Draw a rectangle around the faces</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> w<span class="token punctuation">,</span> h<span class="token punctuation">)</span> <span class="token keyword">in</span> faces<span class="token punctuation">:</span>
+    cv2<span class="token punctuation">.</span>rectangle<span class="token punctuation">(</span>image<span class="token punctuation">,</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>x<span class="token operator">+</span>w<span class="token punctuation">,</span>y<span class="token operator">+</span>w<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+
+cv2<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span><span class="token string">"Faces found"</span><span class="token punctuation">,</span> cv2<span class="token punctuation">.</span>resize<span class="token punctuation">(</span>image<span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">,</span><span class="token number">768</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+cv2<span class="token punctuation">.</span>waitKey<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="输出情况"><a href="#输出情况" class="headerlink" title="输出情况"></a>输出情况</h2><h3 id="处理输出情况"><a href="#处理输出情况" class="headerlink" title="处理输出情况"></a>处理输出情况</h3><p><a href="https://imgchr.com/i/VqyHJJ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/06/18/VqyHJJ.md.png" alt></a></p>
+<h3 id="终端输出情况"><a href="#终端输出情况" class="headerlink" title="终端输出情况"></a>终端输出情况</h3><pre class=" language-bash"><code class="language-bash">rex@RexMacBookPro:PythonCode/FaceDetect ‹master*›$ python3 FaceDetect_Front.py /Users/rex/Desktop/乱七八糟图片/test2.jpg
+Found 7 Faces<span class="token operator">!</span> <span class="token keyword">in</span> the Picture
+</code></pre>
+<h2 id="算法介绍-face-recognition库"><a href="#算法介绍-face-recognition库" class="headerlink" title="算法介绍(face-recognition库)"></a>算法介绍(face-recognition库)</h2><p><strong>face_recognition使用世界上最简单的人脸识别工具，在Python或命令行中识别和操作人脸。使用dlib最先进的人脸识别技术构建而成，并具有深度学习功能。 该模型在<a href="http://vis-www.cs.umass.edu/lfw/" target="_blank" rel="noopener">Labeled Faces in the Wild</a>基准中的准确率为99.38％。</strong></p>
+<h3 id="face-recognition安装"><a href="#face-recognition安装" class="headerlink" title="face_recognition安装"></a>face_recognition安装</h3><ul>
+<li><code>pip3 install face_recognition</code></li>
+</ul>
+<p><strong>注意！安装之前请安装make</strong> <code>`</code></p>
+<ul>
+<li>Ubuntu <code>sudo apt-get install make</code></li>
+<li>Centos <code>sudo yum install make</code></li>
+<li>MaxOS X <code>sudo brew install make</code></li>
+</ul>
+<p><strong>安装完成之后打开Python终端输入</strong><code>import face_recognition</code></p>
+<p><img src="https://s2.ax1x.com/2019/06/18/VqgVIS.png" alt></p>
+<p>若没有报错则说明安装face_recognition成功</p>
+<p><strong>face_recognition学习</strong></p>
+<p><a href="https://www.baidu.com/link?url=k6yEWlP9U9nd8eCASeJFSrSVl6nYvy4vKj473sNkADEYcuv3i6o-hqM46Kadi-FR&amp;wd=&amp;eqid=c7a1224f000387c3000000065d088dec" target="_blank" rel="noopener">face_recognition</a></p>
+<h2 id="face-recognition库人脸识别算逻辑"><a href="#face-recognition库人脸识别算逻辑" class="headerlink" title="face_recognition库人脸识别算逻辑"></a>face_recognition库人脸识别算逻辑</h2><ul>
+<li>读取图片</li>
+<li>使用face_recognition读取图片</li>
+<li>调用face_recognition的face_locations方法定位人脸</li>
+<li>调用OpenCV的rectangle方法绘制人脸框</li>
+<li>显示处理结果</li>
+</ul>
+<h2 id="代码实现-face-recognition库"><a href="#代码实现-face-recognition库" class="headerlink" title="代码实现(face_recognition库)"></a>代码实现(face_recognition库)</h2><pre class=" language-python"><code class="language-python">
+<span class="token keyword">import</span> cv2
+<span class="token keyword">import</span> sys
+
+<span class="token keyword">import</span> face_recognition
+
+<span class="token comment" spellcheck="true"># Get user supplied values</span>
+imagePath <span class="token operator">=</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># Load the image from face_recognition</span>
+image <span class="token operator">=</span> face_recognition<span class="token punctuation">.</span>load_image_file<span class="token punctuation">(</span>imagePath<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># Detect faces in image</span>
+
+face_loaction <span class="token operator">=</span> face_recognition<span class="token punctuation">.</span>face_locations<span class="token punctuation">(</span>image<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Found {0} Faces!"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>len<span class="token punctuation">(</span>face_loaction<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># Read the image with openCV</span>
+
+image <span class="token operator">=</span> cv2<span class="token punctuation">.</span>imread<span class="token punctuation">(</span>imagePath<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># Draw a rectangle around the faces</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span>top<span class="token punctuation">,</span> right<span class="token punctuation">,</span> bottom<span class="token punctuation">,</span> left<span class="token punctuation">)</span> <span class="token keyword">in</span> face_loaction<span class="token punctuation">:</span>
+    cv2<span class="token punctuation">.</span>rectangle<span class="token punctuation">(</span>image<span class="token punctuation">,</span> <span class="token punctuation">(</span>left<span class="token punctuation">,</span> top<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>right<span class="token punctuation">,</span> bottom<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+
+cv2<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span><span class="token string">"Faces found"</span><span class="token punctuation">,</span> cv2<span class="token punctuation">.</span>resize<span class="token punctuation">(</span>image<span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">,</span><span class="token number">768</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+cv2<span class="token punctuation">.</span>waitKey<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="输出情况-1"><a href="#输出情况-1" class="headerlink" title="输出情况"></a>输出情况</h2><h3 id="处理输出情况-1"><a href="#处理输出情况-1" class="headerlink" title="处理输出情况"></a>处理输出情况</h3><p><a href="https://imgchr.com/i/Vq4mGT" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/06/18/Vq4mGT.md.png" alt></a></p>
+<h3 id="终端输出情况-1"><a href="#终端输出情况-1" class="headerlink" title="终端输出情况"></a>终端输出情况</h3><pre class=" language-bash"><code class="language-bash">rex@RexMacBookPro:PythonCode/FaceDetect ‹master*›$ python3 FaceDetect_face_recognition.py /Users/rex/Desktop/乱七八糟图片/test2.jpg 
+Found 7 Faces<span class="token operator">!</span>
+</code></pre>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/RoWe98/2019/06/18/OpenCV 人脸识别算法/" data-id="ck4jwhkpk000dvo4aekxrdcb1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/人脸识别/">人脸识别</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/27/namepace_package/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          C#的namespace和Java的package
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/16/五子棋/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">从头开始编写一个五子棋的博弈游戏(Java)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Https/">Https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt/">PyQt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSL证书/">SSL证书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows-Terminal/">Windows Terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git仓库/">git仓库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/七牛云/">七牛云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二级域名/">二级域名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/五子棋/">五子棋</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/人脸识别/">人脸识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公钥/">公钥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单片机/">单片机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客搭建/">博客搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/宝塔面板/">宝塔面板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文档/">文档</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智慧教室-树莓派/">智慧教室 树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私钥/">私钥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果/">黑苹果</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 12.5px;">C#</a> <a href="/tags/Https/" style="font-size: 10px;">Https</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PyQt/" style="font-size: 10px;">PyQt</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SSL证书/" style="font-size: 10px;">SSL证书</a> <a href="/tags/Windows-Terminal/" style="font-size: 10px;">Windows Terminal</a> <a href="/tags/git仓库/" style="font-size: 10px;">git仓库</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/七牛云/" style="font-size: 10px;">七牛云</a> <a href="/tags/二级域名/" style="font-size: 10px;">二级域名</a> <a href="/tags/五子棋/" style="font-size: 17.5px;">五子棋</a> <a href="/tags/人脸识别/" style="font-size: 10px;">人脸识别</a> <a href="/tags/公钥/" style="font-size: 10px;">公钥</a> <a href="/tags/单片机/" style="font-size: 10px;">单片机</a> <a href="/tags/博客搭建/" style="font-size: 10px;">博客搭建</a> <a href="/tags/宝塔面板/" style="font-size: 10px;">宝塔面板</a> <a href="/tags/文档/" style="font-size: 10px;">文档</a> <a href="/tags/智慧教室-树莓派/" style="font-size: 10px;">智慧教室 树莓派</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/私钥/" style="font-size: 10px;">私钥</a> <a href="/tags/黑苹果/" style="font-size: 15px;">黑苹果</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/24/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/OpenCvCarReco/">基于OpenCV技术的汽车牌照的识别</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/How-to-make-A-image-Server/">如何搭建一个图片服务器</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/JavaSocket/">利用Socket编程(TCP协议)完成聊天室</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/Fix-Bug-Baidu-Aip/">修改百度开放平台人脸识别错误[Python]json 错误xx is not JSON serializable</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Rex Rowe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

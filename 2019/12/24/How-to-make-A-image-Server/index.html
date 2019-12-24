@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>如何搭建一个图片服务器 | Rex&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="author: RoWe98(RexRowe) 前言:在分布式架构中，往往会有多个tomcat，然后你上传的图片只是在其中的某一个tomcat，你访问时是由集群的tomcat随机提供服务。当你访问的tomcat是有图片的那个时，图片能正常显示，如果恰巧是那个没有图片的tomcat时，图片就不能正常显示。这就完成了访问同一个图片，可能你刷新一次可以访问，再刷新一次图片就访问不到了。这时，我们就需要一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何搭建一个图片服务器">
+<meta property="og:url" content="https://github.com/RoWe98/2019/12/24/How-to-make-A-image-Server/index.html">
+<meta property="og:site_name" content="Rex&#39;s Blog">
+<meta property="og:description" content="author: RoWe98(RexRowe) 前言:在分布式架构中，往往会有多个tomcat，然后你上传的图片只是在其中的某一个tomcat，你访问时是由集群的tomcat随机提供服务。当你访问的tomcat是有图片的那个时，图片能正常显示，如果恰巧是那个没有图片的tomcat时，图片就不能正常显示。这就完成了访问同一个图片，可能你刷新一次可以访问，再刷新一次图片就访问不到了。这时，我们就需要一">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/14/Eo4muj.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/14/Eo4nDs.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/14/Eo4MEq.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/14/Eo4ZvQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/14/Eo4E8S.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/14/Eo4ubn.png">
+<meta property="og:updated_time" content="2019-12-24T13:14:52.722Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何搭建一个图片服务器">
+<meta name="twitter:description" content="author: RoWe98(RexRowe) 前言:在分布式架构中，往往会有多个tomcat，然后你上传的图片只是在其中的某一个tomcat，你访问时是由集群的tomcat随机提供服务。当你访问的tomcat是有图片的那个时，图片能正常显示，如果恰巧是那个没有图片的tomcat时，图片就不能正常显示。这就完成了访问同一个图片，可能你刷新一次可以访问，再刷新一次图片就访问不到了。这时，我们就需要一">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/05/14/Eo4muj.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Rex&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Rex&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Code and Passion</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/RoWe98"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-How-to-make-A-image-Server" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/24/How-to-make-A-image-Server/" class="article-date">
+  <time datetime="2019-12-24T13:14:52.722Z" itemprop="datePublished">2019-12-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      如何搭建一个图片服务器
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>author: RoWe98(RexRowe)</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h1><p>在分布式架构中，往往会有多个tomcat，然后你上传的图片只是在其中的某一个tomcat，你访问时是由集群的tomcat随机提供服务。当你访问的tomcat是有图片的那个时，图片能正常显示，如果恰巧是那个没有图片的tomcat时，图片就不能正常显示。这就完成了访问同一个图片，可能你刷新一次可以访问，再刷新一次图片就访问不到了。这时，我们就需要一个服务器用来专门存储图片，一般我们都用nginx。</p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介:"></a>简介:</h1><p>1、nginx:</p>
+<p>Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个BSD-like 协议下发行。其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页服务器中表现较好，中国大陆使用nginx网站用户有：百度、京东、新浪、网易、腾讯、淘宝等。以上是百度百科的介绍，我们目前只需要知道nginx是一个服务器就行了，类似于tomcat的服务器，只不过我们把它用来保存图片。<br>2、vsftp:</p>
+<p>VSFTP是一个基于GPL发布的类Unix系统上使用的FTP服务器软件，它有安全、高速、稳定等特点。我们暂且这样理解:vsftp就是用来传输文件的一个服务，在linux系统中开启vsftp服务，然后在windows中就可以通过linux系统的ip、vsftp服务的端口、vsftp的用户名及密码连接vsftp服务，然后就可以方便的把windows中东西上传到linux中，也可以把linux中的东西下载到windows中。<br>3、nginx+vsftp:</p>
+<p>上面分别介绍了nginx和vsftp，那么这两个东西怎么组合起来用呢？怎么实现这个图片服务器呢？我们知道，tomcat安装好启动后，在浏览器输入localhost:8080，就会出现tomcat的欢迎页，nginx也一样。比如linux的ip是192.168.50.122，那么启动nginx后，在浏览器访问这个地址也会出现nginx的欢迎页，其实是因为它有个默认的访问页面，完整的地址应该是192.168.50.122/index.html，那么我们就可以根据这个，把它默认的访问页面改成我们上传的图片的保存路径，比如上传了一张pic.jpg图片到linux的/home/ftpuser/images中，如果我们把默认访问页面改成/home/ftpuser，那么在浏览器中输入192.168.50.122/images/pic.jpg，就可以访问到这张图片了。下面就来介绍nginx、vsftp的安装以及配置。</p>
+<h1 id="Nginx安装"><a href="#Nginx安装" class="headerlink" title="Nginx安装"></a>Nginx安装</h1><p>依赖环境安装</p>
+<pre class=" language-bash"><code class="language-bash">yum <span class="token function">install</span> gcc
+
+yum <span class="token function">install</span> pcre-devel
+
+yum <span class="token function">install</span> zlib zlib-devel
+
+yum <span class="token function">install</span> openssl openssl-devel
+</code></pre>
+<p>开启防火墙端口：</p>
+<p>Centos7默认防火墙是firewalld,一下是相关命令</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#service firewalld status; #查看防火墙状态</span>
+<span class="token comment" spellcheck="true">#service firewalld start;  或者 #systemctl start firewalld.service;</span>
+<span class="token comment" spellcheck="true">#开启防火墙# service firewalld stop;  或者 #systemctl stop firewalld.service;</span>
+<span class="token comment" spellcheck="true">#关闭防火墙# service firewalld restart;  或者 #systemctl restart firewalld.service;  </span>
+<span class="token comment" spellcheck="true">#重启防火墙# systemctl disable firewalld.service</span>
+<span class="token comment" spellcheck="true">#禁止防火墙开启自启# systemctl enable firewalld</span>
+<span class="token comment" spellcheck="true">#设置防火墙开机启动# yum remove firewalld</span>
+<span class="token comment" spellcheck="true">#卸载firewall# firewall-cmd --query-port=80/tcp  #查询端口号80 是否开启</span>
+</code></pre>
+<p>先把nginx和vsftp相关端口开启，分别执行一下5条指令即可。</p>
+<pre class=" language-bash"><code class="language-bash">firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span>80/tcp --permanent
+firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span>443/tcp --permanent
+firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span>22/tcp --permanent
+firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span>21/tcp --permanent
+firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span>30000-30999/tcp --permanent
+</code></pre>
+<p>①、下载:</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">wget</span> -c https://nginx.org/download/nginx-1.10.1.tar.gz
+</code></pre>
+<p>②、解压:</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">tar</span> -zxvf nginx-1.10.1.tar.gz
+<span class="token function">cd</span> nginx-1.10.1
+</code></pre>
+<p>③、设置编译参数:</p>
+<pre class=" language-bash"><code class="language-bash">./configure \
+--prefix<span class="token operator">=</span>/usr/local/nginx \
+--pid-path<span class="token operator">=</span>/var/run/nginx/nginx.pid \
+--lock-path<span class="token operator">=</span>/var/lock/nginx.lock \
+--error-log-path<span class="token operator">=</span>/var/log/nginx/error.log \
+--http-log-path<span class="token operator">=</span>/var/log/nginx/access.log \
+--with-http_gzip_static_module \
+--http-client-body-temp-path<span class="token operator">=</span>/var/temp/nginx/client \
+--http-proxy-temp-path<span class="token operator">=</span>/var/temp/nginx/proxy \
+--http-fastcgi-temp-path<span class="token operator">=</span>/var/temp/nginx/fastcgi \
+--http-uwsgi-temp-path<span class="token operator">=</span>/var/temp/nginx/uwsgi \
+--http-scgi-temp-path<span class="token operator">=</span>/var/temp/nginx/scgi
+</code></pre>
+<p>直接把这段代码贴到linux中执行就行了。</p>
+<p>④、编译安装:</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">make</span> <span class="token operator">&amp;&amp;</span> <span class="token function">make</span> <span class="token function">install</span>
+</code></pre>
+<p>⑤、启动:</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /usr/local/nginx/sbin
+./nginx
+</code></pre>
+<p>⑥、关闭nginx:<br>在刚才的sbin目录下执行:</p>
+<pre class=" language-bash"><code class="language-bash">./nginx -s stop
+</code></pre>
+<p>遇到的坑:</p>
+<p>第一次启动nginx没问题，如果重启了一下虚拟机，再次到nginx的sbin目录下执行./nginx，出现下图所示的错误:</p>
+<p><img src="https://s2.ax1x.com/2019/05/14/Eo4muj.png" alt="avatar"></p>
+<p>解决办法:<br>在run文件夹下创建一个nginx文件夹即可。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /var/run
+<span class="token function">mkdir</span> nginx
+
+</code></pre>
+<p>然后再运行就可以了</p>
+<p>#vsftp的安装:</p>
+<p>1、安装:</p>
+<pre><code>yum -y install vsftpd
+</code></pre><p>2、添加ftp用户:</p>
+<pre><code>useradd ftpuser
+</code></pre><p>3、给ftp用户添加密码:</p>
+<pre><code>passwd ftpuser
+</code></pre><p>输入两次密码后修改密码。<br>4、修改selinux:<br>①查看状态:</p>
+<pre><code>getsebool -a | grep ftp
+</code></pre><p>执行这个命令可以看到</p>
+<pre><code>allow_ftpd_full_access --&gt; off
+ftp_home_dir --&gt; off
+</code></pre><p>这两个都off，执行如下命令设置为on:</p>
+<pre><code>[root@localhost ~]# setsebool -P ftpd_full_access on
+[root@localhost ~]# setsebool -P ftp_home_dir on
+</code></pre><p>再次执行getsebool -a | grep ftp看到那两个状态是on就行了。<br>5、关闭匿名访问:<br>执行</p>
+<pre><code>vim /etc/vsftpd/vsftpd.conf
+</code></pre><p><img src="https://s2.ax1x.com/2019/05/14/Eo4nDs.png" alt="avatar"></p>
+<p>还要在vsftp.conf文件最下面添加以下内容:</p>
+<pre class=" language-bash"><code class="language-bash">pasv_min_port<span class="token operator">=</span>30000
+pasv_max_port<span class="token operator">=</span>30999
+</code></pre>
+<p>然后保存退出即可。</p>
+<p>6、设置开机启动:</p>
+<pre><code>[root@localhost ~]# chkconfig vsftpd on
+</code></pre><p>7、测试:<br>打开filezilla工具，输入虚拟机的ip，21端口，用户名和密码，点击快速连接，连接vsftp服务:</p>
+<p><img src="https://s2.ax1x.com/2019/05/14/Eo4MEq.jpg" alt="avatar"></p>
+<p>如图所示则连接成功。</p>
+<p>#配置nginx为图片服务器:<br>按照以上步骤安装好nginx和vsftp后，还是不能访问上传的图片的，需要进行如下配置:<br>执行</p>
+<pre><code>vim  /usr/local/nginx/conf/ nginx.conf
+</code></pre><p>命令，打开nginx的配置文件:<br><img src="https://s2.ax1x.com/2019/05/14/Eo4ZvQ.png" alt="avatar"></p>
+<p>按道理这样就可以了，但是我访问却报错:<br>403 forbidden，最后发现是因为ftpuser文件夹没有可读权限，执行如下命令:</p>
+<pre><code>chmod -R 755 /home/ftpuser
+</code></pre><p>再次访问即可成功！</p>
+<p><img src="https://s2.ax1x.com/2019/05/14/Eo4E8S.png" alt="avatar"></p>
+<p><img src="https://s2.ax1x.com/2019/05/14/Eo4ubn.png" alt="avatar"></p>
+<h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/RoWe98/2019/12/24/How-to-make-A-image-Server/" data-id="ck4jwhkpd0006vo4adzdjhkv3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/12/24/OpenCvCarReco/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          基于OpenCV技术的汽车牌照的识别
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/12/24/JavaSocket/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">利用Socket编程(TCP协议)完成聊天室</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Https/">Https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt/">PyQt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSL证书/">SSL证书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows-Terminal/">Windows Terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git仓库/">git仓库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/七牛云/">七牛云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二级域名/">二级域名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/五子棋/">五子棋</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/人脸识别/">人脸识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公钥/">公钥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单片机/">单片机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客搭建/">博客搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/宝塔面板/">宝塔面板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文档/">文档</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智慧教室-树莓派/">智慧教室 树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私钥/">私钥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果/">黑苹果</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 12.5px;">C#</a> <a href="/tags/Https/" style="font-size: 10px;">Https</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PyQt/" style="font-size: 10px;">PyQt</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SSL证书/" style="font-size: 10px;">SSL证书</a> <a href="/tags/Windows-Terminal/" style="font-size: 10px;">Windows Terminal</a> <a href="/tags/git仓库/" style="font-size: 10px;">git仓库</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/七牛云/" style="font-size: 10px;">七牛云</a> <a href="/tags/二级域名/" style="font-size: 10px;">二级域名</a> <a href="/tags/五子棋/" style="font-size: 17.5px;">五子棋</a> <a href="/tags/人脸识别/" style="font-size: 10px;">人脸识别</a> <a href="/tags/公钥/" style="font-size: 10px;">公钥</a> <a href="/tags/单片机/" style="font-size: 10px;">单片机</a> <a href="/tags/博客搭建/" style="font-size: 10px;">博客搭建</a> <a href="/tags/宝塔面板/" style="font-size: 10px;">宝塔面板</a> <a href="/tags/文档/" style="font-size: 10px;">文档</a> <a href="/tags/智慧教室-树莓派/" style="font-size: 10px;">智慧教室 树莓派</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/私钥/" style="font-size: 10px;">私钥</a> <a href="/tags/黑苹果/" style="font-size: 15px;">黑苹果</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/24/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/OpenCvCarReco/">基于OpenCV技术的汽车牌照的识别</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/How-to-make-A-image-Server/">如何搭建一个图片服务器</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/JavaSocket/">利用Socket编程(TCP协议)完成聊天室</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/Fix-Bug-Baidu-Aip/">修改百度开放平台人脸识别错误[Python]json 错误xx is not JSON serializable</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Rex Rowe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

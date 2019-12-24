@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>智慧教室树莓派端开发文档 | Rex&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="智慧教室树莓派端开发文档一、开发环境1.硬件平台 Linux系统 树莓派3B+ 海康威视萤石C6T摄像头  2.开发语言和开发平台 Python3 JetBrains PyCharm Linux系统(Debian) Unix内核系统(Mac OS X 10.14.3)  3.开发依赖的开源库 OpenCV开源视觉库 多媒体处理工具ffmpeg MySQL 5.7数据库 百度AI开放平台 Face+">
+<meta name="keywords" content="文档">
+<meta property="og:type" content="article">
+<meta property="og:title" content="智慧教室树莓派端开发文档">
+<meta property="og:url" content="https://github.com/RoWe98/2019/05/21/智慧教室树莓派端开发文档/index.html">
+<meta property="og:site_name" content="Rex&#39;s Blog">
+<meta property="og:description" content="智慧教室树莓派端开发文档一、开发环境1.硬件平台 Linux系统 树莓派3B+ 海康威视萤石C6T摄像头  2.开发语言和开发平台 Python3 JetBrains PyCharm Linux系统(Debian) Unix内核系统(Mac OS X 10.14.3)  3.开发依赖的开源库 OpenCV开源视觉库 多媒体处理工具ffmpeg MySQL 5.7数据库 百度AI开放平台 Face+">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/21/Ez2xnx.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/21/Ez2s78.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/21/Ez26AS.jpg">
+<meta property="og:updated_time" content="2019-12-24T13:14:52.752Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="智慧教室树莓派端开发文档">
+<meta name="twitter:description" content="智慧教室树莓派端开发文档一、开发环境1.硬件平台 Linux系统 树莓派3B+ 海康威视萤石C6T摄像头  2.开发语言和开发平台 Python3 JetBrains PyCharm Linux系统(Debian) Unix内核系统(Mac OS X 10.14.3)  3.开发依赖的开源库 OpenCV开源视觉库 多媒体处理工具ffmpeg MySQL 5.7数据库 百度AI开放平台 Face+">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/05/21/Ez2xnx.md.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Rex&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Rex&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Code and Passion</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/RoWe98"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-智慧教室树莓派端开发文档" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/21/智慧教室树莓派端开发文档/" class="article-date">
+  <time datetime="2019-05-21T05:23:00.000Z" itemprop="datePublished">2019-05-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      智慧教室树莓派端开发文档
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="智慧教室树莓派端开发文档"><a href="#智慧教室树莓派端开发文档" class="headerlink" title="智慧教室树莓派端开发文档"></a>智慧教室树莓派端开发文档</h1><h1 id="一、开发环境"><a href="#一、开发环境" class="headerlink" title="一、开发环境"></a>一、开发环境</h1><h2 id="1-硬件平台"><a href="#1-硬件平台" class="headerlink" title="1.硬件平台"></a>1.硬件平台</h2><ul>
+<li>Linux系统</li>
+<li>树莓派3B+</li>
+<li>海康威视萤石C6T摄像头</li>
+</ul>
+<h2 id="2-开发语言和开发平台"><a href="#2-开发语言和开发平台" class="headerlink" title="2.开发语言和开发平台"></a>2.开发语言和开发平台</h2><ul>
+<li>Python3</li>
+<li>JetBrains PyCharm</li>
+<li>Linux系统(Debian)</li>
+<li>Unix内核系统(Mac OS X 10.14.3)</li>
+</ul>
+<h2 id="3-开发依赖的开源库"><a href="#3-开发依赖的开源库" class="headerlink" title="3.开发依赖的开源库"></a>3.开发依赖的开源库</h2><ul>
+<li>OpenCV开源视觉库</li>
+<li>多媒体处理工具ffmpeg</li>
+<li>MySQL 5.7数据库</li>
+<li>百度AI开放平台</li>
+<li>Face++ 开放平台</li>
+</ul>
+<h2 id="4-版本控制工具"><a href="#4-版本控制工具" class="headerlink" title="4.版本控制工具"></a>4.版本控制工具</h2><ul>
+<li>使用Git作为版本控制工具</li>
+<li>使用第三方git版本控制服务商github</li>
+</ul>
+<h1 id="二、系统流程与软件架构设计"><a href="#二、系统流程与软件架构设计" class="headerlink" title="二、系统流程与软件架构设计"></a>二、系统流程与软件架构设计</h1><h2 id="1-系统流程"><a href="#1-系统流程" class="headerlink" title="1.系统流程"></a>1.系统流程</h2><p><img src="https://s2.ax1x.com/2019/05/21/Ez2xnx.md.png" alt="软件流程图"></p>
+<p>系统具体流程如图所示</p>
+<ul>
+<li>球机监控</li>
+<li>树莓派获取输入的RTSP视频流</li>
+<li>ffmpeg处理截取关键帧</li>
+<li>OpenCV分割人脸</li>
+<li>人脸库判断</li>
+<li>百度AI签到</li>
+<li>将出勤和学生状态发送给服务器</li>
+<li>计算学生抬头率</li>
+<li>将所有的结果写入数据库</li>
+</ul>
+<h2 id="2-模块设计"><a href="#2-模块设计" class="headerlink" title="2.模块设计"></a>2.模块设计</h2><ul>
+<li>FaceDetect  图像识别模块</li>
+<li>FaceSearch 人脸搜索与判断模块</li>
+<li>FaceDataBase 数据库读取与数据库操作实现模块</li>
+<li>LoadVideo RTSP流处理模块</li>
+<li>Upload 数据结果上传模块</li>
+<li>GetJudge 逻辑关系处理模块</li>
+<li>Wisdom 功能整合模块</li>
+</ul>
+<h1 id="三、功能实现"><a href="#三、功能实现" class="headerlink" title="三、功能实现"></a>三、功能实现</h1><h2 id="1-输入输出信息"><a href="#1-输入输出信息" class="headerlink" title="1.输入输出信息"></a>1.输入输出信息</h2><p>1.1 输入信息</p>
+<ul>
+<li>监控学生上课的动态视频</li>
+<li>监控视频的关键帧</li>
+<li>树莓派调用监控识别到的学生人脸信息</li>
+<li>学生的个人信息</li>
+</ul>
+<p>1.2 输出信息</p>
+<ul>
+<li>学生上课的状态</li>
+<li>抬头率</li>
+<li>课堂考勤分数</li>
+<li>考勤统计</li>
+<li>人像签到</li>
+<li>将信息插入数据库</li>
+</ul>
+<h2 id="2-分析过程实现"><a href="#2-分析过程实现" class="headerlink" title="2.分析过程实现"></a>2.分析过程实现</h2><ul>
+<li><p>部分处理过程显示：</p>
+<p>实例1：</p>
+</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/05/21/Ez2s78.jpg" alt="5D0023EE-68EE-4AEE-9D9B-37C5CEE6B94D"></p>
+<p>​        实例2：      <img src="https://s2.ax1x.com/2019/05/21/Ez26AS.jpg" alt="09B57452-2E96-40CF-B7C3-54292FB662F5"></p>
+<ul>
+<li><p>部分程序输出示例：</p>
+<p>此输出实例为最后一次识别 这时系统已经记录了两次学生的睡觉信息</p>
+</li>
+</ul>
+<pre class=" language-bash"><code class="language-bash">4normal2.jpg
+当前识别到人脸数为：4
+saving<span class="token punctuation">..</span><span class="token punctuation">..</span>.
+saving<span class="token punctuation">..</span><span class="token punctuation">..</span>.
+saving<span class="token punctuation">..</span><span class="token punctuation">..</span>.
+saving<span class="token punctuation">..</span><span class="token punctuation">..</span>.
+当前识别到的人体数为: 4
+调用服务器数据库
+当前出勤学生为:41609050201
+识别成功，已存储
+<span class="token punctuation">[</span><span class="token string">'41609050201'</span><span class="token punctuation">]</span>
+<span class="token punctuation">{</span><span class="token string">"status"</span>:1,<span class="token string">"msg"</span><span class="token keyword">:</span><span class="token string">"true"</span>,<span class="token string">"data"</span>:null<span class="token punctuation">}</span>
+已经把出勤信息发送给服务器
+200
+调用服务器数据库
+当前出勤学生为:41609050203
+识别成功，已存储
+<span class="token punctuation">[</span><span class="token string">'41609050201'</span>, <span class="token string">'41609050203'</span><span class="token punctuation">]</span>
+<span class="token punctuation">{</span><span class="token string">"status"</span>:1,<span class="token string">"msg"</span><span class="token keyword">:</span><span class="token string">"true"</span>,<span class="token string">"data"</span>:null<span class="token punctuation">}</span>
+已经把出勤信息发送给服务器
+200
+<span class="token punctuation">{</span><span class="token string">"status"</span>:1,<span class="token string">"msg"</span><span class="token keyword">:</span><span class="token string">"true"</span>,<span class="token string">"data"</span>:null<span class="token punctuation">}</span>
+已经把出勤信息发送给服务器
+200
+调用服务器数据库
+当前出勤学生为:41609030216
+识别成功，已存储
+<span class="token punctuation">[</span><span class="token string">'41609050201'</span>, <span class="token string">'41609050203'</span>, <span class="token string">'41609030216'</span><span class="token punctuation">]</span>
+<span class="token punctuation">{</span><span class="token string">"status"</span>:1,<span class="token string">"msg"</span><span class="token keyword">:</span><span class="token string">"true"</span>,<span class="token string">"data"</span>:null<span class="token punctuation">}</span>
+已经把出勤信息发送给服务器
+200
+<span class="token punctuation">{</span><span class="token string">"status"</span>:1,<span class="token string">"msg"</span><span class="token keyword">:</span><span class="token string">"true"</span>,<span class="token string">"data"</span>:null<span class="token punctuation">}</span>
+已经把出勤信息发送给服务器
+200
+<span class="token punctuation">{</span><span class="token string">"status"</span>:1,<span class="token string">"msg"</span><span class="token keyword">:</span><span class="token string">"true"</span>,<span class="token string">"data"</span>:null<span class="token punctuation">}</span>
+已经把出勤信息发送给服务器
+200
+调用服务器数据库
+当前出勤学生为:41604090109
+识别成功，已存储
+<span class="token punctuation">[</span><span class="token string">'41609050201'</span>, <span class="token string">'41609050203'</span>, <span class="token string">'41609030216'</span>, <span class="token string">'41604090109'</span><span class="token punctuation">]</span>
+<span class="token punctuation">{</span><span class="token string">"status"</span>:1,<span class="token string">"msg"</span><span class="token keyword">:</span><span class="token string">"true"</span>,<span class="token string">"data"</span>:null<span class="token punctuation">}</span>
+已经把出勤信息发送给服务器
+200
+<span class="token punctuation">{</span><span class="token string">"status"</span>:1,<span class="token string">"msg"</span><span class="token keyword">:</span><span class="token string">"true"</span>,<span class="token string">"data"</span>:null<span class="token punctuation">}</span>
+已经把出勤信息发送给服务器
+200
+<span class="token punctuation">{</span><span class="token string">"status"</span>:1,<span class="token string">"msg"</span><span class="token keyword">:</span><span class="token string">"true"</span>,<span class="token string">"data"</span>:null<span class="token punctuation">}</span>
+已经把出勤信息发送给服务器
+200
+<span class="token punctuation">{</span><span class="token string">"status"</span>:1,<span class="token string">"msg"</span><span class="token keyword">:</span><span class="token string">"true"</span>,<span class="token string">"data"</span>:null<span class="token punctuation">}</span>
+已经把出勤信息发送给服务器
+200
+调用服务器数据库
+调用本地debug数据库
+当前识别到的学生为：<span class="token punctuation">[</span><span class="token string">'刘棋军'</span>, <span class="token string">'刘梦'</span>, <span class="token string">'史晓烁'</span>, <span class="token string">'邹长林'</span><span class="token punctuation">]</span>
+当前学生出勤情况为: <span class="token punctuation">{</span><span class="token string">'刘梦'</span><span class="token keyword">:</span> 4, <span class="token string">'史晓烁'</span><span class="token keyword">:</span> 4, <span class="token string">'刘棋军'</span><span class="token keyword">:</span> 2, <span class="token string">'邹长林'</span><span class="token keyword">:</span> 2<span class="token punctuation">}</span>
+低头的学生为: <span class="token punctuation">[</span><span class="token punctuation">]</span>
+当前低头或睡觉学生情况为: <span class="token punctuation">{</span><span class="token string">'刘棋军'</span><span class="token keyword">:</span> 2, <span class="token string">'邹长林'</span><span class="token keyword">:</span> 2<span class="token punctuation">}</span>
+班级当前抬头率为：1.0
+出勤率为: 1.0
+清除临时文件完毕
+人名已经清除
+
+
+识别结束当前每个学生的出勤情况为：
+<span class="token punctuation">{</span><span class="token string">'刘梦'</span><span class="token keyword">:</span> 4, <span class="token string">'史晓烁'</span><span class="token keyword">:</span> 4, <span class="token string">'刘棋军'</span><span class="token keyword">:</span> 2, <span class="token string">'邹长林'</span><span class="token keyword">:</span> 2<span class="token punctuation">}</span>
+本次识别中低头的学生情况为：
+<span class="token punctuation">{</span><span class="token string">'刘棋军'</span><span class="token keyword">:</span> 2, <span class="token string">'邹长林'</span><span class="token keyword">:</span> 2<span class="token punctuation">}</span>
+学号信息为:
+<span class="token punctuation">[</span><span class="token string">'41609050201'</span>, <span class="token string">'41609050203'</span>, <span class="token string">'41609030216'</span>, <span class="token string">'41604090109'</span><span class="token punctuation">]</span>
+调用服务器数据库
+每个学生的抬头得分情况为：
+<span class="token punctuation">{</span><span class="token string">'刘梦'</span><span class="token keyword">:</span> 40.0, <span class="token string">'史晓烁'</span><span class="token keyword">:</span> 40.0, <span class="token string">'刘棋军'</span><span class="token keyword">:</span> 20.0, <span class="token string">'邹长林'</span><span class="token keyword">:</span> 20.0<span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token string">'41609050203'</span><span class="token keyword">:</span> 1.0, <span class="token string">'41609030216'</span><span class="token keyword">:</span> 1.0, <span class="token string">'41609050201'</span><span class="token keyword">:</span> 0.5, <span class="token string">'41604090109'</span><span class="token keyword">:</span> 0.5<span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token string">'41609050203'</span><span class="token keyword">:</span> 40.0, <span class="token string">'41609030216'</span><span class="token keyword">:</span> 40.0, <span class="token string">'41609050201'</span><span class="token keyword">:</span> 20.0, <span class="token string">'41604090109'</span><span class="token keyword">:</span> 20.0<span class="token punctuation">}</span>
+</code></pre>
+<pre><code>
+
+## 3.调用API说明
+
+- 使用了旷视科技的Face++开放平台的人脸识别模块facedetect
+- 使用了百度AI开放平台的人脸识别API AipDetect
+- 使用了百度AI开放平台的人脸搜索API AipFace
+- 使用了百度AI开放平台的人体分析模块API AipBodyAnalysis
+
+
+
+# 五、构建方法
+
+## 1.依赖库安装
+
+- OpenCV安装
+
+  ```pip3 install python-opencv
+</code></pre><ul>
+<li><p>百度AI开放平台安装</p>
+<p><code>pip3 install baidu-aip</code></p>
+</li>
+<li><p>ffmpeg安装</p>
+<ul>
+<li><p>进入ffmpeg官方网站 <a href="http://ffmpeg.org/" target="_blank" rel="noopener">http://ffmpeg.org/</a> 下载最新的版本</p>
+</li>
+<li><p>解压安装</p>
+<pre><code>tar -xjvf ffmpeg-3.3.1.tar.bz2
+cd ffmpeg-3.3.1/
+./configure
+make
+make install
+</code></pre></li>
+</ul>
+</li>
+<li><p>安装git版本控制工具</p>
+<p><code>yum install git</code></p>
+</li>
+</ul>
+<h2 id="2-软件下载运行"><a href="#2-软件下载运行" class="headerlink" title="2.软件下载运行"></a>2.软件下载运行</h2><ul>
+<li><p>软件下载</p>
+<p>在terminal下输入以下命令</p>
+<p><code>git clone git@github.com:RoWe98/WisdomClassRaspberry.git</code></p>
+</li>
+<li><p>软件运行</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /WisdomClassRaspberry/app/
+python3 run.py
+</code></pre>
+</li>
+</ul>
+<h1 id="六、项目开源地址"><a href="#六、项目开源地址" class="headerlink" title="六、项目开源地址"></a>六、项目开源地址</h1><p>##1.Github开源地址</p>
+<pre class=" language-bash"><code class="language-bash">https://github.com/xpuintelligence/Intelligence_classroom/tree/raspberryCode
+</code></pre>
+<h2 id="2-开源协议"><a href="#2-开源协议" class="headerlink" title="2.开源协议"></a>2.开源协议</h2><pre class=" language-bash"><code class="language-bash">apache开源协议
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/RoWe98/2019/05/21/智慧教室树莓派端开发文档/" data-id="ck4jwhkqj001nvo4ax9008bc8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文档/">文档</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/21/addhttpstowebsite/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          给网站添加HTTPS(添加SSL证书)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/14/markdownjiaocheng/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">markdown教程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Https/">Https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt/">PyQt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSL证书/">SSL证书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows-Terminal/">Windows Terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git仓库/">git仓库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/七牛云/">七牛云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二级域名/">二级域名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/五子棋/">五子棋</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/人脸识别/">人脸识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公钥/">公钥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单片机/">单片机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客搭建/">博客搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/宝塔面板/">宝塔面板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文档/">文档</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智慧教室-树莓派/">智慧教室 树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私钥/">私钥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果/">黑苹果</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 12.5px;">C#</a> <a href="/tags/Https/" style="font-size: 10px;">Https</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PyQt/" style="font-size: 10px;">PyQt</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SSL证书/" style="font-size: 10px;">SSL证书</a> <a href="/tags/Windows-Terminal/" style="font-size: 10px;">Windows Terminal</a> <a href="/tags/git仓库/" style="font-size: 10px;">git仓库</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/七牛云/" style="font-size: 10px;">七牛云</a> <a href="/tags/二级域名/" style="font-size: 10px;">二级域名</a> <a href="/tags/五子棋/" style="font-size: 17.5px;">五子棋</a> <a href="/tags/人脸识别/" style="font-size: 10px;">人脸识别</a> <a href="/tags/公钥/" style="font-size: 10px;">公钥</a> <a href="/tags/单片机/" style="font-size: 10px;">单片机</a> <a href="/tags/博客搭建/" style="font-size: 10px;">博客搭建</a> <a href="/tags/宝塔面板/" style="font-size: 10px;">宝塔面板</a> <a href="/tags/文档/" style="font-size: 10px;">文档</a> <a href="/tags/智慧教室-树莓派/" style="font-size: 10px;">智慧教室 树莓派</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/私钥/" style="font-size: 10px;">私钥</a> <a href="/tags/黑苹果/" style="font-size: 15px;">黑苹果</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/24/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/OpenCvCarReco/">基于OpenCV技术的汽车牌照的识别</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/How-to-make-A-image-Server/">如何搭建一个图片服务器</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/JavaSocket/">利用Socket编程(TCP协议)完成聊天室</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/Fix-Bug-Baidu-Aip/">修改百度开放平台人脸识别错误[Python]json 错误xx is not JSON serializable</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Rex Rowe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

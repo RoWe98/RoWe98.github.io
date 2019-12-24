@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>给网站添加HTTPS(添加SSL证书) | Rex&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="给网站添加HTTPS(添加SSSL证书)一、HTTP和HTTPS的区别 点击查看区别  二、如何给你的网站添加SL证书这里我以阿里云举例子，请确保你的网站已经备案并且可以访问http://你的域名1.打开阿里云域名控制面板并点击管理 2.点击免费申请SSL证书 3.点击免费证书 并填写你要颁发的域名 4.在证书面板里面找到你刚申请的证书 并根据提示完成审核然后下载SSL证书 5.使用宝塔linux">
+<meta name="keywords" content="http,Https">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给网站添加HTTPS(添加SSL证书)">
+<meta property="og:url" content="https://github.com/RoWe98/2019/05/21/addhttpstowebsite/index.html">
+<meta property="og:site_name" content="Rex&#39;s Blog">
+<meta property="og:description" content="给网站添加HTTPS(添加SSSL证书)一、HTTP和HTTPS的区别 点击查看区别  二、如何给你的网站添加SL证书这里我以阿里云举例子，请确保你的网站已经备案并且可以访问http://你的域名1.打开阿里云域名控制面板并点击管理 2.点击免费申请SSL证书 3.点击免费证书 并填写你要颁发的域名 4.在证书面板里面找到你刚申请的证书 并根据提示完成审核然后下载SSL证书 5.使用宝塔linux">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/23/VPgM4K.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/23/VPgtHI.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/23/VPg6Ds.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/23/VPg7r9.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/23/VPgv8O.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/23/VP29rd.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/23/VPRDmj.png">
+<meta property="og:updated_time" content="2019-12-24T13:14:52.725Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="给网站添加HTTPS(添加SSL证书)">
+<meta name="twitter:description" content="给网站添加HTTPS(添加SSSL证书)一、HTTP和HTTPS的区别 点击查看区别  二、如何给你的网站添加SL证书这里我以阿里云举例子，请确保你的网站已经备案并且可以访问http://你的域名1.打开阿里云域名控制面板并点击管理 2.点击免费申请SSL证书 3.点击免费证书 并填写你要颁发的域名 4.在证书面板里面找到你刚申请的证书 并根据提示完成审核然后下载SSL证书 5.使用宝塔linux">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/05/23/VPgM4K.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Rex&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Rex&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Code and Passion</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/RoWe98"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-addhttpstowebsite" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/21/addhttpstowebsite/" class="article-date">
+  <time datetime="2019-05-21T05:23:00.000Z" itemprop="datePublished">2019-05-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      给网站添加HTTPS(添加SSL证书)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="给网站添加HTTPS-添加SSSL证书"><a href="#给网站添加HTTPS-添加SSSL证书" class="headerlink" title="给网站添加HTTPS(添加SSSL证书)"></a>给网站添加HTTPS(添加SSSL证书)</h1><h2 id="一、HTTP和HTTPS的区别"><a href="#一、HTTP和HTTPS的区别" class="headerlink" title="一、HTTP和HTTPS的区别"></a>一、HTTP和HTTPS的区别</h2><p><a href="https://luoshaoqi.cn/2019/05/23/httpandhttps/" target="_blank" rel="noopener"> 点击查看区别 </a></p>
+<h2 id="二、如何给你的网站添加SL证书"><a href="#二、如何给你的网站添加SL证书" class="headerlink" title="二、如何给你的网站添加SL证书"></a>二、如何给你的网站添加SL证书</h2><h3 id="这里我以阿里云举例子，请确保你的网站已经备案并且可以访问http-你的域名"><a href="#这里我以阿里云举例子，请确保你的网站已经备案并且可以访问http-你的域名" class="headerlink" title="这里我以阿里云举例子，请确保你的网站已经备案并且可以访问http://你的域名"></a>这里我以阿里云举例子，请确保你的网站已经备案并且可以访问http://你的域名</h3><h2 id="1-打开阿里云域名控制面板并点击管理"><a href="#1-打开阿里云域名控制面板并点击管理" class="headerlink" title="1.打开阿里云域名控制面板并点击管理"></a>1.打开阿里云域名控制面板并点击管理</h2><p><img src="https://s2.ax1x.com/2019/05/23/VPgM4K.png" alt="管理"></p>
+<h2 id="2-点击免费申请SSL证书"><a href="#2-点击免费申请SSL证书" class="headerlink" title="2.点击免费申请SSL证书"></a>2.点击免费申请SSL证书</h2><p><img src="https://s2.ax1x.com/2019/05/23/VPgtHI.md.png" alt="SSL"></p>
+<h2 id="3-点击免费证书-并填写你要颁发的域名"><a href="#3-点击免费证书-并填写你要颁发的域名" class="headerlink" title="3.点击免费证书 并填写你要颁发的域名"></a>3.点击免费证书 并填写你要颁发的域名</h2><p><a href="https://imgchr.com/i/VPg6Ds" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/05/23/VPg6Ds.md.png" alt="VPg6Ds.md.png"></a></p>
+<h2 id="4-在证书面板里面找到你刚申请的证书-并根据提示完成审核然后下载SSL证书"><a href="#4-在证书面板里面找到你刚申请的证书-并根据提示完成审核然后下载SSL证书" class="headerlink" title="4.在证书面板里面找到你刚申请的证书 并根据提示完成审核然后下载SSL证书"></a>4.在证书面板里面找到你刚申请的证书 并根据提示完成审核然后下载SSL证书</h2><p><a href="https://imgchr.com/i/VPg7r9" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/05/23/VPg7r9.md.png" alt="VPg7r9.md.png"></a></p>
+<h2 id="5-使用宝塔linux面板部署SSL证书"><a href="#5-使用宝塔linux面板部署SSL证书" class="headerlink" title="5.使用宝塔linux面板部署SSL证书"></a>5.使用宝塔linux面板部署SSL证书</h2><ul>
+<li>打开宝塔linux面板(如下所示)</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/05/23/VPgv8O.png" alt="VPgv8O.png"></p>
+<ul>
+<li>点击网站管理找到你之前绑定的网站如果没有绑定网站请参考本篇文档<a href="https://luoshaoqi.cn/2019/05/14/gitRepoBlog/" target="_blank" rel="noopener">参考</a>的添加站点部分</li>
+<li>点击设置</li>
+</ul>
+<p><a href="https://imgchr.com/i/VP29rd" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/05/23/VP29rd.md.png" alt="VP29rd.md.png"></a></p>
+<ul>
+<li>在设置中的SSL一栏中如图所示添加你刚下载的证书(左边为.key文件的内容,右边为.pom文件的内容)</li>
+</ul>
+<p><a href="https://imgchr.com/i/VPRDmj" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/05/23/VPRDmj.png" alt="VPRDmj.png"></a></p>
+<ul>
+<li>点击保存即可</li>
+</ul>
+<h2 id="6-然后访问你的网站测试效果https-你的域名"><a href="#6-然后访问你的网站测试效果https-你的域名" class="headerlink" title="6.然后访问你的网站测试效果https://你的域名"></a>6.然后访问你的网站测试效果https://你的域名</h2><h3 id="最后附上我的博客链接欢迎访问"><a href="#最后附上我的博客链接欢迎访问" class="headerlink" title="最后附上我的博客链接欢迎访问"></a>最后附上我的博客链接欢迎访问</h3><p><a href="https://www.luoshaoqi.cn" target="_blank" rel="noopener">RexRowe的博客</a></p>
+<h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/RoWe98/2019/05/21/addhttpstowebsite/" data-id="ck4jwhkpy000qvo4a5lsnjcol" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Https/">Https</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/23/httpandhttps/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Http与Https的区别
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/21/智慧教室树莓派端开发文档/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">智慧教室树莓派端开发文档</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Https/">Https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt/">PyQt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSL证书/">SSL证书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows-Terminal/">Windows Terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git仓库/">git仓库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/七牛云/">七牛云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二级域名/">二级域名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/五子棋/">五子棋</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/人脸识别/">人脸识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公钥/">公钥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单片机/">单片机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客搭建/">博客搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/宝塔面板/">宝塔面板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文档/">文档</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智慧教室-树莓派/">智慧教室 树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私钥/">私钥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果/">黑苹果</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 12.5px;">C#</a> <a href="/tags/Https/" style="font-size: 10px;">Https</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PyQt/" style="font-size: 10px;">PyQt</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SSL证书/" style="font-size: 10px;">SSL证书</a> <a href="/tags/Windows-Terminal/" style="font-size: 10px;">Windows Terminal</a> <a href="/tags/git仓库/" style="font-size: 10px;">git仓库</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/七牛云/" style="font-size: 10px;">七牛云</a> <a href="/tags/二级域名/" style="font-size: 10px;">二级域名</a> <a href="/tags/五子棋/" style="font-size: 17.5px;">五子棋</a> <a href="/tags/人脸识别/" style="font-size: 10px;">人脸识别</a> <a href="/tags/公钥/" style="font-size: 10px;">公钥</a> <a href="/tags/单片机/" style="font-size: 10px;">单片机</a> <a href="/tags/博客搭建/" style="font-size: 10px;">博客搭建</a> <a href="/tags/宝塔面板/" style="font-size: 10px;">宝塔面板</a> <a href="/tags/文档/" style="font-size: 10px;">文档</a> <a href="/tags/智慧教室-树莓派/" style="font-size: 10px;">智慧教室 树莓派</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/私钥/" style="font-size: 10px;">私钥</a> <a href="/tags/黑苹果/" style="font-size: 15px;">黑苹果</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/24/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/OpenCvCarReco/">基于OpenCV技术的汽车牌照的识别</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/How-to-make-A-image-Server/">如何搭建一个图片服务器</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/JavaSocket/">利用Socket编程(TCP协议)完成聊天室</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/Fix-Bug-Baidu-Aip/">修改百度开放平台人脸识别错误[Python]json 错误xx is not JSON serializable</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Rex Rowe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>离散哈特莱变换（DHT） | Rex&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="author: RoWe98(RexRowe) 离散哈特莱变换（DHT）摘 要离散哈特莱变换（DHT）是一种与傅里叶变换相关的转换。类似于离散傅里叶变换。与傅里叶变换在信号处理及其他相关领域有相似的应用。本设计介绍了DHT的定义以及使用C语言实现其算法。 关键字：傅里叶变换   哈特莱变换 二、设计平台 Linux平台 GCC编译器 vim windows Visual Studio 2017">
+<meta property="og:type" content="article">
+<meta property="og:title" content="离散哈特莱变换（DHT）">
+<meta property="og:url" content="https://github.com/RoWe98/2019/12/24/DHT/index.html">
+<meta property="og:site_name" content="Rex&#39;s Blog">
+<meta property="og:description" content="author: RoWe98(RexRowe) 离散哈特莱变换（DHT）摘 要离散哈特莱变换（DHT）是一种与傅里叶变换相关的转换。类似于离散傅里叶变换。与傅里叶变换在信号处理及其他相关领域有相似的应用。本设计介绍了DHT的定义以及使用C语言实现其算法。 关键字：傅里叶变换   哈特莱变换 二、设计平台 Linux平台 GCC编译器 vim windows Visual Studio 2017">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/14/EoWnD1.png">
+<meta property="og:updated_time" content="2019-12-24T13:14:52.721Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="离散哈特莱变换（DHT）">
+<meta name="twitter:description" content="author: RoWe98(RexRowe) 离散哈特莱变换（DHT）摘 要离散哈特莱变换（DHT）是一种与傅里叶变换相关的转换。类似于离散傅里叶变换。与傅里叶变换在信号处理及其他相关领域有相似的应用。本设计介绍了DHT的定义以及使用C语言实现其算法。 关键字：傅里叶变换   哈特莱变换 二、设计平台 Linux平台 GCC编译器 vim windows Visual Studio 2017">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/05/14/EoWnD1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Rex&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Rex&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Code and Passion</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/RoWe98"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-DHT" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/24/DHT/" class="article-date">
+  <time datetime="2019-12-24T13:14:52.721Z" itemprop="datePublished">2019-12-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      离散哈特莱变换（DHT）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>author: RoWe98(RexRowe)</p>
+<h1 id="离散哈特莱变换（DHT）"><a href="#离散哈特莱变换（DHT）" class="headerlink" title="离散哈特莱变换（DHT）"></a>离散哈特莱变换（DHT）</h1><h1 id="摘-要"><a href="#摘-要" class="headerlink" title="摘 要"></a>摘 要</h1><p>离散哈特莱变换（DHT）是一种与傅里叶变换相关的转换。类似于离散傅里叶变换。与傅里叶变换在信号处理及其他相关领域有相似的应用。<br>本设计介绍了DHT的定义以及使用C语言实现其算法。</p>
+<p>关键字：傅里叶变换   哈特莱变换</p>
+<h1 id="二、设计平台"><a href="#二、设计平台" class="headerlink" title="二、设计平台"></a>二、设计平台</h1><ul>
+<li>Linux平台</li>
+<li>GCC编译器</li>
+<li>vim</li>
+<li>windows</li>
+<li>Visual Studio 2017</li>
+</ul>
+<h1 id="三、设计原理"><a href="#三、设计原理" class="headerlink" title="三、设计原理"></a>三、设计原理</h1><p><strong>DHT的定义</strong><br>设$\mathrm{x}(\mathrm{n}), \mathrm{n}=0,1, \ldots, \mathrm{N}-1 \mathrm{x}(\mathrm{n}), \mathrm{n}=0,1, \ldots, \mathrm{N}-1$为一实序列，其DHT定义为：</p>
+<p>$$<br>\begin{aligned} X_{H}(k) &amp;=\operatorname{DHTEx(n)} ] \ &amp;=\sum_{n=0}^{N-1} x(n) \operatorname{cas}\left(\frac{2 \pi}{N} k n\right), \quad k=0,1, \cdots, N-1 \end{aligned}<br>$$</p>
+<p>式中$\operatorname{cas}(a)=\cos (a)+\sin (a) \operatorname{cas}(a)=\cos (a)+\sin (a)$逆变换$(\mathrm{IDHT})$为：</p>
+<p>$$<br>\begin{aligned} x(n) &amp;=\operatorname{IDHT}\left[X_{H}(k)\right] \ &amp;=(1 / N) \sum_{k=0}^{N-1} X_{H}(k) \operatorname{cas}\left(\frac{2 \pi}{N} k n\right), \quad n=0,1, \cdots, N-1 \end{aligned}<br>$$</p>
+<p>DHT的正交证明：</p>
+<p>$$<br>\sum_{k=0}^{N-1} \operatorname{cas}\left(\frac{2 \pi}{N} k n\right) \operatorname{cas}\left(\frac{2 \pi}{N} k m\right)=\sum_{k=0}^{N-1}\left[\cos \left(\frac{2 \pi}{N} k(n-m)\right)+\sin \left(\frac{2 \pi}{N} k(n+m)\right)\right]=\left{\begin{array}{ll}{N,} &amp; {k=0} \ {0,} &amp; {k \neq 0}\end{array}\right.<br>$$</p>
+<p>DHT和DFT关系<br>用X(k)表示实序列x(n)的，用XH(k)表示x(n)的DHT，分别用XHe(k)， XHo(k)表示XH(k)的偶对称分量与奇对称分量，即：</p>
+<p>$X_{\mathrm{H}}(k)=X_{\mathrm{He}}(k)+X_{\mathrm{Ho}}(k)$</p>
+<p>其中:</p>
+<p>$$<br>\begin{array}{c}{X_{H e}(k)=\frac{1}{2}\left[X_{H}(k)+X_{H}(N-k)\right]}{X_{H o}(k)=\frac{1}{2}\left[X_{H}(k)-X_{H}(N-k)\right]} \ {X(k)=X_{H e}(k)-j X_{H o}(k)} \ {X_{H}(k)=\operatorname{Re}[X(k)]-\operatorname{Im}[X(k)]} \ {X(k)=\frac{1}{2}\left[X_{H}(k)+X_{H}(N-k)\right]-\frac{1}{2} j\left[X_{H}(k)-X_{H}(N-k)\right]}\end{array}<br>$$</p>
+<p><strong>DHT的优点</strong></p>
+<ul>
+<li><p>DHT为实值，避免了复数运算</p>
+</li>
+<li><p>DHT正反变换形式基本一致</p>
+</li>
+<li><p>DHT与DFT的转换容易实现</p>
+</li>
+</ul>
+<p><strong>DHT的性质</strong></p>
+<p>DHT的性质与DFT的性质类似，但由于DHT是实序列间的变换，有些性质有具体的表达形式。这里只给出结论。<br>设x(n)、y(n)的DHT分别为Xh(k)、Yh(k)。用符号x(n)↔Xh(k)表示Xh(k)=DHT(x(n))。</p>
+<p>1.线性性<br><img src="https://s2.ax1x.com/2019/05/14/EoWnD1.png" alt></p>
+<p>2.逆序列x(N-n)的DHT<br>$x(N-n) \leftrightarrow X_{\mathrm{H}}(\mathrm{N}-k)$</p>
+<p>且<br>$$<br>\mathrm{X}<em>{\mathrm{H}}(\mathrm{N}-\mathrm{k})=\sum</em>{n=0}^{\mathrm{N}-1} x(n)\left[\cos \left(\frac{2 \pi}{\mathrm{N}} k n\right)-\sin \left(\frac{2 \pi}{N} k n\right)\right], \quad k=0,1, \cdots, N-1<br>$$</p>
+<p>当k=0时，可得Xh(N)=Xh(0)。</p>
+<p>3.循环位移的性质<br>$$<br>\begin{array}{l}{x\left(\left(n-n_{0}\right)<em>{N} R</em>{N}(n) \leftrightarrow X_{\mathrm{H}}(k) \cos \left(\frac{2 \pi}{N} k n_{0}\right)+X_{\mathrm{H}}(N-k) \sin \left(\frac{2 \pi}{N} k n_{0}\right)\right)} \ {x\left(\left(n+n_{0}\right)<em>{N} R</em>{N}(n) \leftrightarrow X_{\mathrm{H}}(k) \cos \left(\frac{2 \pi}{N} k n_{0}\right)-X_{\mathrm{H}}(N-k) \sin \left(\frac{2 \pi}{N} k n_{0}\right)\right)}\end{array}<br>$$</p>
+<h1 id="四、实现代码"><a href="#四、实现代码" class="headerlink" title="四、实现代码"></a>四、实现代码</h1><p>【C语言】</p>
+<pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;math.h></span></span>
+
+<span class="token keyword">const</span> <span class="token keyword">int</span> N <span class="token operator">=</span> <span class="token number">1024</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">float</span> PI <span class="token operator">=</span> <span class="token number">3.1416</span><span class="token punctuation">;</span>
+
+<span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">float</span> <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> <span class="token keyword">float</span> <span class="token operator">&amp;</span>b<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">float</span> t<span class="token punctuation">;</span>
+    t <span class="token operator">=</span> a<span class="token punctuation">;</span>
+    a <span class="token operator">=</span> b<span class="token punctuation">;</span>
+    b <span class="token operator">=</span> t<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">bitrp</span><span class="token punctuation">(</span><span class="token keyword">float</span> xreal<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">float</span> ximag<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 位反转置换 Bit-reversal Permutation</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> p<span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i <span class="token operator">*</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        p<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        a <span class="token operator">=</span> i<span class="token punctuation">;</span>
+        b <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> p<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            b <span class="token operator">=</span> <span class="token punctuation">(</span>b <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span>a <span class="token operator">&amp;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// b = b * 2 + a % 2;</span>
+            a <span class="token operator">>>=</span> <span class="token number">1</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// a = a / 2;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">></span> i<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">swap</span><span class="token punctuation">(</span>xreal<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> xreal<span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">swap</span><span class="token punctuation">(</span>ximag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> ximag<span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">FFT</span><span class="token punctuation">(</span><span class="token keyword">float</span> xreal<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">float</span> ximag<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 快速傅立叶变换，将复数 x 变换后仍保存在 x 中，xreal, ximag 分        //    别是 x 的实部和虚部</span>
+    <span class="token keyword">float</span> wreal<span class="token punctuation">[</span>N <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> wimag<span class="token punctuation">[</span>N <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> treal<span class="token punctuation">,</span> timag<span class="token punctuation">,</span> ureal<span class="token punctuation">,</span> uimag<span class="token punctuation">,</span> arg<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> m<span class="token punctuation">,</span> k<span class="token punctuation">,</span> j<span class="token punctuation">,</span> t<span class="token punctuation">,</span> index1<span class="token punctuation">,</span> index2<span class="token punctuation">;</span>
+
+    <span class="token function">bitrp</span><span class="token punctuation">(</span>xreal<span class="token punctuation">,</span> ximag<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 计算 1 的前 n / 2 个 n 次方根的共轭复数 W'j = wreal [j] + i *         wimag [j] , j = 0, 1, ... , n / 2 - 1</span>
+    arg <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">2</span> <span class="token operator">*</span> PI <span class="token operator">/</span> n<span class="token punctuation">;</span>
+    treal <span class="token operator">=</span> <span class="token function">cos</span><span class="token punctuation">(</span>arg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    timag <span class="token operator">=</span> <span class="token function">sin</span><span class="token punctuation">(</span>arg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    wreal<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1.0</span><span class="token punctuation">;</span>
+    wimag<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        wreal<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> wreal<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> treal <span class="token operator">-</span> wimag<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> timag<span class="token punctuation">;</span>
+        wimag<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> wreal<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> timag <span class="token operator">+</span> wimag<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> treal<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>m <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> m <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> m <span class="token operator">*</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> k <span class="token operator">+</span><span class="token operator">=</span> m<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> m <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                index1 <span class="token operator">=</span> k <span class="token operator">+</span> j<span class="token punctuation">;</span>
+                index2 <span class="token operator">=</span> index1 <span class="token operator">+</span> m <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+                t <span class="token operator">=</span> n <span class="token operator">*</span> j <span class="token operator">/</span> m<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 旋转因子 w 的实部在 wreal [] 中                    //的下标为 t</span>
+                treal <span class="token operator">=</span> wreal<span class="token punctuation">[</span>t<span class="token punctuation">]</span> <span class="token operator">*</span> xreal<span class="token punctuation">[</span>index2<span class="token punctuation">]</span> <span class="token operator">-</span> wimag<span class="token punctuation">[</span>t<span class="token punctuation">]</span> <span class="token operator">*</span>                         ximag<span class="token punctuation">[</span>index2<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                timag <span class="token operator">=</span> wreal<span class="token punctuation">[</span>t<span class="token punctuation">]</span> <span class="token operator">*</span> ximag<span class="token punctuation">[</span>index2<span class="token punctuation">]</span> <span class="token operator">+</span> wimag<span class="token punctuation">[</span>t<span class="token punctuation">]</span> <span class="token operator">*</span>                         xreal<span class="token punctuation">[</span>index2<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                ureal <span class="token operator">=</span> xreal<span class="token punctuation">[</span>index1<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                uimag <span class="token operator">=</span> ximag<span class="token punctuation">[</span>index1<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                xreal<span class="token punctuation">[</span>index1<span class="token punctuation">]</span> <span class="token operator">=</span> ureal <span class="token operator">+</span> treal<span class="token punctuation">;</span>
+                ximag<span class="token punctuation">[</span>index1<span class="token punctuation">]</span> <span class="token operator">=</span> uimag <span class="token operator">+</span> timag<span class="token punctuation">;</span>
+                xreal<span class="token punctuation">[</span>index2<span class="token punctuation">]</span> <span class="token operator">=</span> ureal <span class="token operator">-</span> treal<span class="token punctuation">;</span>
+                ximag<span class="token punctuation">[</span>index2<span class="token punctuation">]</span> <span class="token operator">=</span> uimag <span class="token operator">-</span> timag<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+
+<span class="token keyword">void</span> <span class="token function">FFT_test</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">float</span> xreal<span class="token punctuation">[</span>N<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> ximag<span class="token punctuation">[</span>N<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"请输入数据，格式(实部 虚部) : \n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">8</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%f%f"</span><span class="token punctuation">,</span>xreal<span class="token operator">+</span>i<span class="token punctuation">,</span>ximag<span class="token operator">+</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    n <span class="token operator">=</span> i<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 要求 n 为 2 的整数幂</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d is not a power of 2! "</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        i <span class="token operator">/</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">FFT</span><span class="token punctuation">(</span>xreal<span class="token punctuation">,</span> ximag<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"=====================================\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"FFT:    i          实部       虚部 \n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"     %4d       %8.4f    %8.4f "</span><span class="token punctuation">,</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> xreal<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>             ximag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"===================================== \n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"DHT:    i        结果 \n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"     %4d        %8.4f "</span><span class="token punctuation">,</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> xreal<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span>ximag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"=====================================\n "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">FFT_test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">system</span><span class="token punctuation">(</span><span class="token string">"pause"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h1 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h1><pre class=" language-bash"><code class="language-bash">请输入数据，格式<span class="token punctuation">(</span>实部 虚部<span class="token punctuation">)</span> <span class="token keyword">:</span> 
+1 0
+2 0
+3 0
+4 0
+5 0
+6 0
+7 0
+8 0
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+FFT:    i          实部       虚部 
+        1        36.0000      0.0000 
+        2        -4.0000      9.6568 
+        3        -4.0000      4.0000 
+        4        -4.0000      1.6569 
+        5        -4.0000      0.0000 
+        6        -4.0000     -1.6568 
+        7        -4.0000     -4.0000 
+        8        -4.0001     -9.6569 
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span> 
+DHT:    i        结果 
+        1         36.0000 
+        2        -13.6568 
+        3         -8.0000 
+        4         -5.6568 
+        5         -4.0000 
+        6         -2.3432 
+        7         -0.0000 
+        8          5.6568 
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+</code></pre>
+<h1 id="End"><a href="#End" class="headerlink" title="End"></a>End</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/RoWe98/2019/12/24/DHT/" data-id="ck4jwhkpe0007vo4a19301nij" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/12/24/Fix-Bug-Baidu-Aip/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          修改百度开放平台人脸识别错误[Python]json 错误xx is not JSON serializable
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/20/PyQt_Trial/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PyQt入门（第一个PyQt应用）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Https/">Https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt/">PyQt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSL证书/">SSL证书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows-Terminal/">Windows Terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git仓库/">git仓库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/七牛云/">七牛云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二级域名/">二级域名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/五子棋/">五子棋</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/人脸识别/">人脸识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公钥/">公钥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单片机/">单片机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客搭建/">博客搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/宝塔面板/">宝塔面板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文档/">文档</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智慧教室-树莓派/">智慧教室 树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私钥/">私钥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果/">黑苹果</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 12.5px;">C#</a> <a href="/tags/Https/" style="font-size: 10px;">Https</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PyQt/" style="font-size: 10px;">PyQt</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SSL证书/" style="font-size: 10px;">SSL证书</a> <a href="/tags/Windows-Terminal/" style="font-size: 10px;">Windows Terminal</a> <a href="/tags/git仓库/" style="font-size: 10px;">git仓库</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/七牛云/" style="font-size: 10px;">七牛云</a> <a href="/tags/二级域名/" style="font-size: 10px;">二级域名</a> <a href="/tags/五子棋/" style="font-size: 17.5px;">五子棋</a> <a href="/tags/人脸识别/" style="font-size: 10px;">人脸识别</a> <a href="/tags/公钥/" style="font-size: 10px;">公钥</a> <a href="/tags/单片机/" style="font-size: 10px;">单片机</a> <a href="/tags/博客搭建/" style="font-size: 10px;">博客搭建</a> <a href="/tags/宝塔面板/" style="font-size: 10px;">宝塔面板</a> <a href="/tags/文档/" style="font-size: 10px;">文档</a> <a href="/tags/智慧教室-树莓派/" style="font-size: 10px;">智慧教室 树莓派</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/私钥/" style="font-size: 10px;">私钥</a> <a href="/tags/黑苹果/" style="font-size: 15px;">黑苹果</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/24/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/OpenCvCarReco/">基于OpenCV技术的汽车牌照的识别</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/How-to-make-A-image-Server/">如何搭建一个图片服务器</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/JavaSocket/">利用Socket编程(TCP协议)完成聊天室</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/Fix-Bug-Baidu-Aip/">修改百度开放平台人脸识别错误[Python]json 错误xx is not JSON serializable</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Rex Rowe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

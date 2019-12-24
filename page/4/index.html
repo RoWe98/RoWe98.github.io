@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Rex&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="起风了，唯有努力生存 风立ちぬ,いぎ生きめやも">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rex&#39;s Blog">
+<meta property="og:url" content="https://github.com/RoWe98/page/4/index.html">
+<meta property="og:site_name" content="Rex&#39;s Blog">
+<meta property="og:description" content="起风了，唯有努力生存 风立ちぬ,いぎ生きめやも">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rex&#39;s Blog">
+<meta name="twitter:description" content="起风了，唯有努力生存 风立ちぬ,いぎ生きめやも">
+  
+    <link rel="alternate" href="/atom.xml" title="Rex&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Rex&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Code and Passion</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/RoWe98"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Wisdom-record" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/11/Wisdom-record/" class="article-date">
+  <time datetime="2019-05-11T04:36:10.000Z" itemprop="datePublished">2019-05-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/11/Wisdom-record/">智慧教室树莓派篇工作日志</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="WisdomClassRaspberry"><a href="#WisdomClassRaspberry" class="headerlink" title="WisdomClassRaspberry"></a>WisdomClassRaspberry</h1><h1 id="智慧教室树莓派端"><a href="#智慧教室树莓派端" class="headerlink" title="智慧教室树莓派端"></a>智慧教室树莓派端</h1><p>/app 核心代码文件夹</p>
+<pre><code>LoadVideo.py rstp视频流读取模块 
+
+FaceDataBase.py 数据库读取模块    
+
+FaceSearch.py 人脸搜索模块
+
+FaceDetect 人脸识别模块
+
+Wisdom    功能执行模块
+
+debugFunc  测试功能使用的模块
+
+deleteCache 删除缓存模块
+
+GetJudge   判断模块
+
+Upload     上传模块
+
+run.py 程序执行文件
+</code></pre><p>/faces 裁剪人脸文件夹</p>
+<p>/image 测试图片文件夹</p>
+<p>/output 处理完成的图片文件夹</p>
+<h1 id="文件树"><a href="#文件树" class="headerlink" title="文件树"></a>文件树</h1><pre><code>.
+├── README.md
+├── app
+│   ├── FaceDataBase.py
+│   ├── FaceDetect.py
+│   ├── FaceSearch.py
+│   ├── GetJudge.py
+│   ├── LoadVideo.py
+│   ├── Upload.py
+│   ├── Wisdom.py
+│   ├── debugFunc.py
+│   ├── deleteCache.py
+│   └── run.py
+├── faces
+│   └── README.md
+├── image
+│   └── README.md
+└── output
+</code></pre><h1 id="运行方法"><a href="#运行方法" class="headerlink" title="运行方法"></a>运行方法</h1><pre><code>1.确认安装opencv 
+pip3 install opencv-python
+2.确认安装百度云开放平台
+pip3 install baidu-aip
+3.安装七牛云
+pip3 install qiniu
+4.运行
+python3 run.py
+</code></pre><h1 id="注意-部分机器测试bug解决方法"><a href="#注意-部分机器测试bug解决方法" class="headerlink" title="注意 部分机器测试bug解决方法"></a>注意 部分机器测试bug解决方法</h1><pre><code>bug是由于百度云ai开放平台的人脸识别库中的部分bugs
+</code></pre><p><a href="http://120.79.148.86/2019/05/10/Fix-Bug-Baidu-Aip/" target="_blank" rel="noopener">解决方法</a></p>
+<h1 id="2019-4-25"><a href="#2019-4-25" class="headerlink" title="2019-4-25"></a>2019-4-25</h1><pre><code>编写了人脸识别模块FaceDetect
+编写了人脸搜索模块FaceSearch
+添加了run.py运行文件
+修改了FaceDetect FaceSearch
+修复了同时调用次数太多导致api调用失败的bug
+</code></pre><h1 id="2019-4-26"><a href="#2019-4-26" class="headerlink" title="2019-4-26"></a>2019-4-26</h1><pre><code>引入了百度云ai人体识别的接口 丰富了软件功能
+添加了数据库读写的功能
+编写了数据库读写类FaceDataBase
+修复了同时调用次数太多导致api调用失败的bug(改为300毫秒调用一次api)
+</code></pre><h1 id="2019-4-27"><a href="#2019-4-27" class="headerlink" title="2019-4-27"></a>2019-4-27</h1><pre><code>修复了bug
+添加了显示出勤率，抬头率的方法
+</code></pre><h1 id="2019-4-28"><a href="#2019-4-28" class="headerlink" title="2019-4-28"></a>2019-4-28</h1><pre><code>修复了bug
+优化了数据库算法
+编写了每个学生出勤率计算的方法
+完成了与整个系统的数据库的对接
+</code></pre><h1 id="2019-4-29"><a href="#2019-4-29" class="headerlink" title="2019-4-29"></a>2019-4-29</h1><pre><code>修复了bug
+添加了每次识别结束后删除faces文件夹下面待识别图片的功能
+添加了多次识别功能
+</code></pre><h1 id="2019-4-30"><a href="#2019-4-30" class="headerlink" title="2019-4-30"></a>2019-4-30</h1><pre><code>正式发布智慧教室(树莓派)V1.0 测试版本
+完成系统架构搭建 并测试成功
+</code></pre><h1 id="2019-5-5"><a href="#2019-5-5" class="headerlink" title="2019-5-5"></a>2019-5-5</h1><pre><code>Fix issues
+修改bug
+增加了程序的健壮性
+进行了人性化修改
+</code></pre><h1 id="2019-5-6"><a href="#2019-5-6" class="headerlink" title="2019-5-6"></a>2019-5-6</h1><pre><code>开始编写检测是否一直低头和一直睡觉的功能
+正在实现中 由于数据库表的问题 有一些小bug
+</code></pre><h1 id="2019-5-7"><a href="#2019-5-7" class="headerlink" title="2019-5-7"></a>2019-5-7</h1><pre><code>由于数据库的原因 自己编写了一个调用本地数据库的方法用来debug
+修改了部分bug 
+修改了抬头率判断的bug
+</code></pre><h1 id="2019-5-8"><a href="#2019-5-8" class="headerlink" title="2019-5-8"></a>2019-5-8</h1><pre><code>新写了方法判断是不是在写作业
+</code></pre><h1 id="2019-5-9"><a href="#2019-5-9" class="headerlink" title="2019-5-9"></a>2019-5-9</h1><pre><code>新写了方法判断学生睡觉情况
+新写了方法判断每个学生出勤情况
+</code></pre><h1 id="2019-5-10"><a href="#2019-5-10" class="headerlink" title="2019-5-10"></a>2019-5-10</h1><pre><code>新写了方法将处理后的图片上传到七牛云
+</code></pre><h1 id="2019-5-11"><a href="#2019-5-11" class="headerlink" title="2019-5-11"></a>2019-5-11</h1><pre><code>编写了计算学生抬头分数的方法
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/RoWe98/2019/05/11/Wisdom-record/" data-id="ck4jwhkpv000nvo4aaxyu5rb3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/智慧教室-树莓派/">智慧教室 树莓派</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Https/">Https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt/">PyQt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSL证书/">SSL证书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows-Terminal/">Windows Terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git仓库/">git仓库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/七牛云/">七牛云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二级域名/">二级域名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/五子棋/">五子棋</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/人脸识别/">人脸识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公钥/">公钥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单片机/">单片机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客搭建/">博客搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/宝塔面板/">宝塔面板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文档/">文档</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智慧教室-树莓派/">智慧教室 树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私钥/">私钥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果/">黑苹果</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 12.5px;">C#</a> <a href="/tags/Https/" style="font-size: 10px;">Https</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PyQt/" style="font-size: 10px;">PyQt</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SSL证书/" style="font-size: 10px;">SSL证书</a> <a href="/tags/Windows-Terminal/" style="font-size: 10px;">Windows Terminal</a> <a href="/tags/git仓库/" style="font-size: 10px;">git仓库</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/七牛云/" style="font-size: 10px;">七牛云</a> <a href="/tags/二级域名/" style="font-size: 10px;">二级域名</a> <a href="/tags/五子棋/" style="font-size: 17.5px;">五子棋</a> <a href="/tags/人脸识别/" style="font-size: 10px;">人脸识别</a> <a href="/tags/公钥/" style="font-size: 10px;">公钥</a> <a href="/tags/单片机/" style="font-size: 10px;">单片机</a> <a href="/tags/博客搭建/" style="font-size: 10px;">博客搭建</a> <a href="/tags/宝塔面板/" style="font-size: 10px;">宝塔面板</a> <a href="/tags/文档/" style="font-size: 10px;">文档</a> <a href="/tags/智慧教室-树莓派/" style="font-size: 10px;">智慧教室 树莓派</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/私钥/" style="font-size: 10px;">私钥</a> <a href="/tags/黑苹果/" style="font-size: 15px;">黑苹果</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/24/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/OpenCvCarReco/">基于OpenCV技术的汽车牌照的识别</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/How-to-make-A-image-Server/">如何搭建一个图片服务器</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/JavaSocket/">利用Socket编程(TCP协议)完成聊天室</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/Fix-Bug-Baidu-Aip/">修改百度开放平台人脸识别错误[Python]json 错误xx is not JSON serializable</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Rex Rowe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

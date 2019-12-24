@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>解决黑苹果Usb配件需要电源 | Rex&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="解决黑苹果Usb配件需要电源问题描述这几天在使用u盘和移动硬盘的时候突然发现会出现一个问题 如图所示：  在远景论坛和tonymacx86上面搜寻了半天大概已经确定了问题 USB3.0没有完美驱动成功 问题解决众所周知安装黑苹果的过程中最难的一部分不是安装而是配置驱动，这让我想着如何是好，于是我就去GitHub上找到我当时下载EFI文件 的那个仓库中 仔细阅读了他的README文档，其中在这样一个">
+<meta name="keywords" content="黑苹果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决黑苹果Usb配件需要电源">
+<meta property="og:url" content="https://github.com/RoWe98/2019/06/14/Usb_Needs_Power/index.html">
+<meta property="og:site_name" content="Rex&#39;s Blog">
+<meta property="og:description" content="解决黑苹果Usb配件需要电源问题描述这几天在使用u盘和移动硬盘的时候突然发现会出现一个问题 如图所示：  在远景论坛和tonymacx86上面搜寻了半天大概已经确定了问题 USB3.0没有完美驱动成功 问题解决众所周知安装黑苹果的过程中最难的一部分不是安装而是配置驱动，这让我想着如何是好，于是我就去GitHub上找到我当时下载EFI文件 的那个仓库中 仔细阅读了他的README文档，其中在这样一个">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/14/V4oDGd.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/14/V4T0mV.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/14/V4TR61.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/14/V4T5TO.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/14/V47nNF.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/14/V47GB6.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/14/V47w3d.md.png">
+<meta property="og:updated_time" content="2019-12-24T13:14:52.725Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="解决黑苹果Usb配件需要电源">
+<meta name="twitter:description" content="解决黑苹果Usb配件需要电源问题描述这几天在使用u盘和移动硬盘的时候突然发现会出现一个问题 如图所示：  在远景论坛和tonymacx86上面搜寻了半天大概已经确定了问题 USB3.0没有完美驱动成功 问题解决众所周知安装黑苹果的过程中最难的一部分不是安装而是配置驱动，这让我想着如何是好，于是我就去GitHub上找到我当时下载EFI文件 的那个仓库中 仔细阅读了他的README文档，其中在这样一个">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/06/14/V4oDGd.md.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Rex&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Rex&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Code and Passion</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/RoWe98"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Usb_Needs_Power" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/14/Usb_Needs_Power/" class="article-date">
+  <time datetime="2019-06-14T05:15:00.000Z" itemprop="datePublished">2019-06-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      解决黑苹果Usb配件需要电源
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="解决黑苹果Usb配件需要电源"><a href="#解决黑苹果Usb配件需要电源" class="headerlink" title="解决黑苹果Usb配件需要电源"></a>解决黑苹果Usb配件需要电源</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>这几天在使用u盘和移动硬盘的时候突然发现会出现一个问题</p>
+<p>如图所示：</p>
+<p><a href="https://imgchr.com/i/V4oDGd" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/06/14/V4oDGd.md.png" alt></a></p>
+<p>在远景论坛和tonymacx86上面搜寻了半天大概已经确定了问题</p>
+<p><strong>USB3.0没有完美驱动成功</strong></p>
+<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>众所周知安装黑苹果的过程中最难的一部分不是安装而是配置驱动，这让我想着如何是好，于是我就去GitHub上找到我当时下载EFI文件 的那个仓库中 仔细阅读了他的README文档，其中在这样一个文件夹里面找到了一个文件</p>
+<p><a href="http://qiniusave.luoshaoqi.cn/Lenovo-T450-USB.kext.zip" target="_blank" rel="noopener">Lenovo-T450-USB.kext</a></p>
+<p>他在README里面是这么描述的</p>
+<p><strong>Miscellaneous</strong></p>
+<ul>
+<li><p>A collection of different kernel extensions that I could use with this build but are currently not in use. I keep them in this folder for quick access if I find my self in a situation where I need them so that I do not have to download them all over again. The most important kext in this directory is the USB-T450-Injector.kext file. It can be used to inject the systems proper USB configuration in the absence of a properly configured USBInjectall + .aml configuration file. Don’t get rid of it. If your USB ports ever stop working just load this kext into the “Other” folder and reboot.</p>
+</li>
+<li><p>意思是如果你使用USBinjectall+.aml文件有问题的话 可以用USB-T450-Injector.kext文件代替</p>
+</li>
+</ul>
+<p>使用方法很简单</p>
+<ul>
+<li>打开terminal输入<code>diskutil list</code></li>
+<li>找到EFI分区 使用<code>sudo diskutil mount [EFI分区盘名]</code> 挂载EFI分区</li>
+<li><p>在EFI分区的CLOVER文件夹中的kext中的 Other中 删除之前的USBInjectall.kext替换为Lenovo-T450-USB.kext</p>
+</li>
+<li><p>重启计算机即可，在我重启之后发现已经解决了问题</p>
+</li>
+</ul>
+<p><strong>如图所示</strong></p>
+<p><img src="https://s2.ax1x.com/2019/06/14/V4T0mV.png" alt></p>
+<p><img src="https://s2.ax1x.com/2019/06/14/V4TR61.png" alt></p>
+<p><img src="https://s2.ax1x.com/2019/06/14/V4T5TO.png" alt></p>
+<p>如图所示速度也是USB3.0的速度，这时候就说明了我们的USB3.0已经完美驱动了</p>
+<h2 id="解除USB端口数量限制补丁"><a href="#解除USB端口数量限制补丁" class="headerlink" title="解除USB端口数量限制补丁"></a>解除USB端口数量限制补丁</h2><p><strong>使用方法</strong></p>
+<ul>
+<li>打开Clover Configurator 在这<a href="https://mackie100projects.altervista.org/" target="_blank" rel="noopener">下载</a></li>
+<li>然后点击挂载分区输入密码后选择EFI文件 如图所示</li>
+</ul>
+<p><a href="https://imgchr.com/i/V47nNF" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/06/14/V47nNF.md.png" alt></a></p>
+<p><a href="https://imgchr.com/i/V47GB6" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/06/14/V47GB6.md.png" alt></a></p>
+<ul>
+<li>然后在内核和驱动补丁这一块点击四次加号按照名字加入如下内容</li>
+</ul>
+<pre class=" language-bash"><code class="language-bash">Comment: **USB** port limit patch <span class="token comment" spellcheck="true">#1 10.14.x modify by DalianSky(credit ydeng)</span>
+
+Name: com.apple.iokit.IO**USB**HostFamily
+
+Find: 83FB0F0F
+
+Replace: 83FB3F0F
+
+MatchOS: 10.14.x
+
+
+
+Comment: **USB** port limit patch <span class="token comment" spellcheck="true">#2 10.14.x modify by DalianSky(credit PMHeart)</span>
+
+Name: com.apple.iokit.IO**USB**HostFamily
+
+Find: 83E30FD3
+
+Replace: 83E33FD3
+
+MatchOS: 10.14.x
+
+
+
+Comment: **USB** Port limit patch <span class="token comment" spellcheck="true">#3 10.14.x modify by DalianSky(credits PMheart)</span>
+
+Name: com.apple.driver.usb.Apple**USB**XHCI
+
+Find: 83FB0F0F
+
+Replace: 83FB3F0F
+
+MatchOS: 10.14.x
+
+
+
+Comment: **USB** Port limit patch <span class="token comment" spellcheck="true">#4 10.14.x modify by DalianSky(credits PMheart)</span>
+
+Name: com.apple.driver.usb.Apple**USB**XHCI
+
+Find: 83FF0F0F
+
+Replace: 83FF3F0F
+
+MatchOS: 10.14.x
+</code></pre>
+<ul>
+<li>如图所示</li>
+</ul>
+<p><a href="https://imgchr.com/i/V47w3d" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/06/14/V47w3d.md.png" alt></a></p>
+<ul>
+<li>然后command+s 保存关闭即可</li>
+<li>重启计算机即可解决问题</li>
+</ul>
+<h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/RoWe98/2019/06/14/Usb_Needs_Power/" data-id="ck4jwhkpr000ivo4a8t2986zx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/黑苹果/">黑苹果</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/14/bcmNetCard/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          为黑苹果解锁AirDrop功能和蓝牙以及WI-FI
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/08/黑苹果安装教程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">黑苹果安装教程 (Mojave 10.14.5) ThinkPad T450</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Https/">Https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt/">PyQt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSL证书/">SSL证书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows-Terminal/">Windows Terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git仓库/">git仓库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/七牛云/">七牛云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二级域名/">二级域名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/五子棋/">五子棋</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/人脸识别/">人脸识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公钥/">公钥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单片机/">单片机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客搭建/">博客搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/宝塔面板/">宝塔面板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文档/">文档</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智慧教室-树莓派/">智慧教室 树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私钥/">私钥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果/">黑苹果</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 12.5px;">C#</a> <a href="/tags/Https/" style="font-size: 10px;">Https</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PyQt/" style="font-size: 10px;">PyQt</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SSL证书/" style="font-size: 10px;">SSL证书</a> <a href="/tags/Windows-Terminal/" style="font-size: 10px;">Windows Terminal</a> <a href="/tags/git仓库/" style="font-size: 10px;">git仓库</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/七牛云/" style="font-size: 10px;">七牛云</a> <a href="/tags/二级域名/" style="font-size: 10px;">二级域名</a> <a href="/tags/五子棋/" style="font-size: 17.5px;">五子棋</a> <a href="/tags/人脸识别/" style="font-size: 10px;">人脸识别</a> <a href="/tags/公钥/" style="font-size: 10px;">公钥</a> <a href="/tags/单片机/" style="font-size: 10px;">单片机</a> <a href="/tags/博客搭建/" style="font-size: 10px;">博客搭建</a> <a href="/tags/宝塔面板/" style="font-size: 10px;">宝塔面板</a> <a href="/tags/文档/" style="font-size: 10px;">文档</a> <a href="/tags/智慧教室-树莓派/" style="font-size: 10px;">智慧教室 树莓派</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/私钥/" style="font-size: 10px;">私钥</a> <a href="/tags/黑苹果/" style="font-size: 15px;">黑苹果</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/24/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/OpenCvCarReco/">基于OpenCV技术的汽车牌照的识别</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/How-to-make-A-image-Server/">如何搭建一个图片服务器</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/JavaSocket/">利用Socket编程(TCP协议)完成聊天室</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/Fix-Bug-Baidu-Aip/">修改百度开放平台人脸识别错误[Python]json 错误xx is not JSON serializable</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Rex Rowe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

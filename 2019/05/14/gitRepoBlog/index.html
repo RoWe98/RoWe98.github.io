@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>一步步带你搭建远程服务器的git仓库,并将自己的博客部署到服务器上 | Rex&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一步步带你搭建远程服务器的git仓库,并将自己的博客部署到服务器上本次教程基于宝塔linux控制面板 没有安装宝塔的可以进入如下网页安装宝塔本次教程基于HEXO博客架构 这里我默认你已经安装了hexo博客而且可以往github上push页面 并且可以访问http://你的githubid.github.io 的博客网站 如果你已经测试成功上面的两个步骤那你就可以继续往下看 如果不行 请将上面两个前">
+<meta name="keywords" content="git仓库,博客搭建,宝塔面板">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一步步带你搭建远程服务器的git仓库,并将自己的博客部署到服务器上">
+<meta property="og:url" content="https://github.com/RoWe98/2019/05/14/gitRepoBlog/index.html">
+<meta property="og:site_name" content="Rex&#39;s Blog">
+<meta property="og:description" content="一步步带你搭建远程服务器的git仓库,并将自己的博客部署到服务器上本次教程基于宝塔linux控制面板 没有安装宝塔的可以进入如下网页安装宝塔本次教程基于HEXO博客架构 这里我默认你已经安装了hexo博客而且可以往github上push页面 并且可以访问http://你的githubid.github.io 的博客网站 如果你已经测试成功上面的两个步骤那你就可以继续往下看 如果不行 请将上面两个前">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/14/EohDXj.md.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/14/Eoh5jJ.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/14/Eohf9U.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/14/Eoh4c4.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/14/Eohh3F.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/14/EohRhT.jpg">
+<meta property="og:updated_time" content="2019-12-24T13:14:52.727Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一步步带你搭建远程服务器的git仓库,并将自己的博客部署到服务器上">
+<meta name="twitter:description" content="一步步带你搭建远程服务器的git仓库,并将自己的博客部署到服务器上本次教程基于宝塔linux控制面板 没有安装宝塔的可以进入如下网页安装宝塔本次教程基于HEXO博客架构 这里我默认你已经安装了hexo博客而且可以往github上push页面 并且可以访问http://你的githubid.github.io 的博客网站 如果你已经测试成功上面的两个步骤那你就可以继续往下看 如果不行 请将上面两个前">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/05/14/EohDXj.md.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Rex&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Rex&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Code and Passion</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/RoWe98"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-gitRepoBlog" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/14/gitRepoBlog/" class="article-date">
+  <time datetime="2019-05-14T08:16:39.000Z" itemprop="datePublished">2019-05-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      一步步带你搭建远程服务器的git仓库,并将自己的博客部署到服务器上
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一步步带你搭建远程服务器的git仓库-并将自己的博客部署到服务器上"><a href="#一步步带你搭建远程服务器的git仓库-并将自己的博客部署到服务器上" class="headerlink" title="一步步带你搭建远程服务器的git仓库,并将自己的博客部署到服务器上"></a>一步步带你搭建远程服务器的git仓库,并将自己的博客部署到服务器上</h1><h4 id="本次教程基于宝塔linux控制面板-没有安装宝塔的可以进入如下网页安装宝塔"><a href="#本次教程基于宝塔linux控制面板-没有安装宝塔的可以进入如下网页安装宝塔" class="headerlink" title="本次教程基于宝塔linux控制面板 没有安装宝塔的可以进入如下网页安装宝塔"></a>本次教程基于宝塔linux控制面板 没有安装宝塔的可以进入如下网页安装宝塔</h4><h4 id="本次教程基于HEXO博客架构-这里我默认你已经安装了hexo博客而且可以往github上push页面-并且可以访问"><a href="#本次教程基于HEXO博客架构-这里我默认你已经安装了hexo博客而且可以往github上push页面-并且可以访问" class="headerlink" title="本次教程基于HEXO博客架构 这里我默认你已经安装了hexo博客而且可以往github上push页面 并且可以访问"></a>本次教程基于HEXO博客架构 这里我默认你已经安装了hexo博客而且可以往github上push页面 并且可以访问</h4><p>http://你的githubid.github.io 的博客网站</p>
+<h4 id="如果你已经测试成功上面的两个步骤那你就可以继续往下看-如果不行-请将上面两个前提条件实现"><a href="#如果你已经测试成功上面的两个步骤那你就可以继续往下看-如果不行-请将上面两个前提条件实现" class="headerlink" title="如果你已经测试成功上面的两个步骤那你就可以继续往下看 如果不行 请将上面两个前提条件实现"></a>如果你已经测试成功上面的两个步骤那你就可以继续往下看 如果不行 请将上面两个前提条件实现</h4><ul>
+<li><a href="https://www.bt.cn/bbs/thread-19376-1-1.html" target="_blank" rel="noopener">宝塔安装</a></li>
+</ul>
+<p>使用阿里云的朋友如果你的服务器为新的镜像请做如下操作：</p>
+<ul>
+<li><p>将你的系统镜像更改为宝塔面板(BT-PANEL)</p>
+</li>
+<li><p>在防火墙端口开放如下端口：8888，80，3306，8080</p>
+</li>
+<li><p>http://服务器ip:8888 为你的宝塔控制面板地址</p>
+</li>
+<li><p>输入如下命令查看宝塔的默认密码，ps：默认管理员账号为:admin</p>
+</li>
+</ul>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">cat</span> /www/server/panel/default.pl
+</code></pre>
+<h3 id="看到这一步我已经默认你安装完宝塔linux界面并可以进入管理员界面-如图所示"><a href="#看到这一步我已经默认你安装完宝塔linux界面并可以进入管理员界面-如图所示" class="headerlink" title="看到这一步我已经默认你安装完宝塔linux界面并可以进入管理员界面 如图所示"></a>看到这一步我已经默认你安装完宝塔linux界面并可以进入管理员界面 如图所示</h3><p><img src="https://s2.ax1x.com/2019/05/14/EohDXj.md.jpg" alt="界面"></p>
+<h4 id="服务器设置"><a href="#服务器设置" class="headerlink" title="服务器设置"></a>服务器设置</h4><h4 id="这里我默认认为你已经在本地配置了git账号密码"><a href="#这里我默认认为你已经在本地配置了git账号密码" class="headerlink" title="这里我默认认为你已经在本地配置了git账号密码"></a>这里我默认认为你已经在本地配置了git账号密码</h4><h1 id="1-安装git"><a href="#1-安装git" class="headerlink" title="1.安装git"></a>1.安装git</h1><p>当然以下操作都是在你远程服务器上操作的</p>
+<ul>
+<li><a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">git教程</a></li>
+</ul>
+<p>centos 输入以下命令</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> --version // 如无，则安装
+yum <span class="token function">install</span> curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel
+yum <span class="token function">install</span> -y <span class="token function">git</span>
+</code></pre>
+<h1 id="2-配置git仓库"><a href="#2-配置git仓库" class="headerlink" title="2.配置git仓库"></a>2.配置git仓库</h1><p>1.创建用户git并配置仓库</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">useradd</span> <span class="token function">git</span>
+<span class="token function">passwd</span> <span class="token function">git</span> // 设置密码
+<span class="token function">su</span> <span class="token function">git</span> // 这步很重要，不切换用户后面会很麻烦
+<span class="token function">mkdir</span> -p /www/wwwroot/blog // 项目存在的真实目录,由于需要用到宝塔 我们把博客地址放到宝塔网站地址下
+</code></pre>
+<h5 id="如果上面mkdir出错是因为我们没有把git用户添加到sudoers中"><a href="#如果上面mkdir出错是因为我们没有把git用户添加到sudoers中" class="headerlink" title="如果上面mkdir出错是因为我们没有把git用户添加到sudoers中"></a>如果上面mkdir出错是因为我们没有把git用户添加到sudoers中</h5><h5 id="做如下操作"><a href="#做如下操作" class="headerlink" title="做如下操作"></a>做如下操作</h5><pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">su</span> //输入密码进入root用户
+<span class="token function">cd</span> /etc/
+vim sudoers
+</code></pre>
+<p>找到root ALL=(ALL)   ALL<br>在下面添加</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> ALL<span class="token operator">=</span><span class="token punctuation">(</span>ALL<span class="token punctuation">)</span>   ALL
+</code></pre>
+<p>注意对齐</p>
+<p>然后进入git用户执行如下命令</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">su</span> <span class="token function">git</span>
+<span class="token function">sudo</span> <span class="token function">mkdir</span> -p /www/wwwroot/blog
+<span class="token function">cd</span> /home/git/
+<span class="token function">mkdir</span> repos <span class="token operator">&amp;&amp;</span> <span class="token function">cd</span> repos
+<span class="token function">git</span> init --bare blog.git
+<span class="token function">cd</span> blog.git/hooks
+<span class="token function">vi</span> post-receive // 创建hook钩子函数，输入了内容如下（原理可以参考上面的链接<span class="token punctuation">)</span>
+</code></pre>
+<p>输入如下内容</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span>
+<span class="token function">git</span> --work-tree<span class="token operator">=</span>/www/wwwroot/blog --git-dir<span class="token operator">=</span>/home/git/repos/blog.git checkout -f
+</code></pre>
+<p>添加完毕后修改权限，执行如下命令</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">chmod</span> +x post-receive
+<span class="token keyword">exit</span> // 退出到 root 登录
+<span class="token function">chown</span> -R git:git /home/git/repos/blog.git // 添加权限
+</code></pre>
+<p>测试git仓库是否可用，另找空白文件夹，执行如下命令<br>注意这一步在自己的电脑上测试</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> clone git@server_ip:/home/git/repos/blog.git
+</code></pre>
+<p>如果能把空仓库拉下来，就说明 git 仓库搭建成功了<br>当然你会提示你拉下来的是空仓库</p>
+<h1 id="3-本地电脑设置"><a href="#3-本地电脑设置" class="headerlink" title="3.本地电脑设置"></a>3.本地电脑设置</h1><p>建立ssh信任关系，在本地电脑，执行如下命令</p>
+<p>参考资料：</p>
+<ul>
+<li><a href="http://roclinux.cn/?p=2551" target="_blank" rel="noopener">ssh-copy-id 建立信任</a></li>
+<li>mac系统自己百度(google)安装ssh-copy-id 其实就是一个简单的脚本</li>
+</ul>
+<pre class=" language-bash"><code class="language-bash">ssh-copy-id -i C:/Users/yourname/.ssh/id_rsa.pub git@server_ip
+<span class="token function">ssh</span> git@server_ip // 测试能否登录
+</code></pre>
+<h5 id="注：此时的-ssh-登录-git-用户不需要密码！否则就有错，请仔细重复步骤-3-4"><a href="#注：此时的-ssh-登录-git-用户不需要密码！否则就有错，请仔细重复步骤-3-4" class="headerlink" title="注：此时的 ssh 登录 git 用户不需要密码！否则就有错，请仔细重复步骤 3-4"></a>注：此时的 ssh 登录 git 用户不需要密码！否则就有错，请仔细重复步骤 3-4</h5><p>如果第 5 步能成功，为了安全起见禁用git用户的 shell 登录权限，从而只能用git clone,git push等登录，执行如下命令</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">cat</span> /etc/shells // 查看<span class="token variable"><span class="token variable">`</span>git-shell<span class="token variable">`</span></span>是否在登录方式里面，有则跳过
+<span class="token function">which</span> git-shell // 查看是否安装
+<span class="token function">vi</span> /etc/shells
+添加上2步显示出来的路劲，通常在 /usr/bin/git-shell
+</code></pre>
+<p>修改/etc/passwd中的权限，将原来的</p>
+<pre class=" language-bash"><code class="language-bash">git:x:1000:1000::/home/git:/bin/bash
+</code></pre>
+<p>修改为</p>
+<pre class=" language-bash"><code class="language-bash">git:x:1000:1000:,,,:/home/git:/usr/bin/git-shell
+</code></pre>
+<h1 id="4-宝塔面板设置"><a href="#4-宝塔面板设置" class="headerlink" title="4.宝塔面板设置"></a>4.宝塔面板设置</h1><ul>
+<li>进入你的宝塔面板 yourip:8888 并输入账号密码进入如下界面</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/05/14/Eoh5jJ.jpg" alt="界面"></p>
+<p>选择网站 添加站点 如图所示</p>
+<p><img src="https://s2.ax1x.com/2019/05/14/Eohf9U.jpg" alt="网站"></p>
+<p>然后填入如下信息</p>
+<ul>
+<li>网站ip</li>
+<li>网站目录选择/www/wwwroot/blog</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/05/14/Eoh4c4.jpg" alt="设置"></p>
+<p>然后点击提交</p>
+<h1 id="5-HEXO配置文件设置"><a href="#5-HEXO配置文件设置" class="headerlink" title="5.HEXO配置文件设置"></a>5.HEXO配置文件设置</h1><p>在你和hexo博客配置文件中找到根目录中的_config.yml 在deploy项中修改如下</p>
+<p><img src="https://s2.ax1x.com/2019/05/14/Eohh3F.jpg" alt="设置"></p>
+<pre class=" language-bash"><code class="language-bash">deploy:
+    type: <span class="token function">git</span>
+    repository:
+      github: 这里是你的github.io页面地址
+      server: git@你的ip:/home/git/repos/blog.git
+    branch: master
+</code></pre>
+<p>然后执行如下命令将你的博客push到服务器的git仓库中</p>
+<pre class=" language-bash"><code class="language-bash">hexo clean
+hexo d -g
+</code></pre>
+<p>然后在浏览器输入你的网站<a href="http://ip/" target="_blank" rel="noopener">http://ip/</a> 查看效果</p>
+<p>成功的话会显示你的主页界面</p>
+<p><img src="https://s2.ax1x.com/2019/05/14/EohRhT.jpg" alt="主页"></p>
+<p>最后放上我的博客首页欢迎访问</p>
+<ul>
+<li><a href="https://www.luoshaoqi.cn/" target="_blank" rel="noopener">我的博客</a></li>
+</ul>
+<p>#END</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/RoWe98/2019/05/14/gitRepoBlog/" data-id="ck4jwhkq1000vvo4acejgadv4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git仓库/">git仓库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客搭建/">博客搭建</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/宝塔面板/">宝塔面板</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/14/markdownjiaocheng/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          markdown教程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/13/mac-change-hosts/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">mac系统下更改hosts提高github clone速度</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Https/">Https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt/">PyQt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSL证书/">SSL证书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows-Terminal/">Windows Terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git仓库/">git仓库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/七牛云/">七牛云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二级域名/">二级域名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/五子棋/">五子棋</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/人脸识别/">人脸识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公钥/">公钥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单片机/">单片机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客搭建/">博客搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/宝塔面板/">宝塔面板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文档/">文档</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智慧教室-树莓派/">智慧教室 树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私钥/">私钥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑苹果/">黑苹果</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 12.5px;">C#</a> <a href="/tags/Https/" style="font-size: 10px;">Https</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PyQt/" style="font-size: 10px;">PyQt</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SSL证书/" style="font-size: 10px;">SSL证书</a> <a href="/tags/Windows-Terminal/" style="font-size: 10px;">Windows Terminal</a> <a href="/tags/git仓库/" style="font-size: 10px;">git仓库</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/七牛云/" style="font-size: 10px;">七牛云</a> <a href="/tags/二级域名/" style="font-size: 10px;">二级域名</a> <a href="/tags/五子棋/" style="font-size: 17.5px;">五子棋</a> <a href="/tags/人脸识别/" style="font-size: 10px;">人脸识别</a> <a href="/tags/公钥/" style="font-size: 10px;">公钥</a> <a href="/tags/单片机/" style="font-size: 10px;">单片机</a> <a href="/tags/博客搭建/" style="font-size: 10px;">博客搭建</a> <a href="/tags/宝塔面板/" style="font-size: 10px;">宝塔面板</a> <a href="/tags/文档/" style="font-size: 10px;">文档</a> <a href="/tags/智慧教室-树莓派/" style="font-size: 10px;">智慧教室 树莓派</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/私钥/" style="font-size: 10px;">私钥</a> <a href="/tags/黑苹果/" style="font-size: 15px;">黑苹果</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/24/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/OpenCvCarReco/">基于OpenCV技术的汽车牌照的识别</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/How-to-make-A-image-Server/">如何搭建一个图片服务器</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/JavaSocket/">利用Socket编程(TCP协议)完成聊天室</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/24/Fix-Bug-Baidu-Aip/">修改百度开放平台人脸识别错误[Python]json 错误xx is not JSON serializable</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Rex Rowe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
